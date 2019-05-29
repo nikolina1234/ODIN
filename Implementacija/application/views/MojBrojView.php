@@ -76,7 +76,7 @@
             <div class="row">
 
                 <div class="col-sm-6 mt-sm-4">
-                    <button type="button" class="btn btn-secondary btn-lg" name="btn0" id = "id0" onclick="dugme_klik(this.name)">? </button>
+                    <button type="button" class="btn btn-secondary btn-lg" name="btn0" id = "id0" onclick="dugme_klik(this.name)">?</button>
                     &nbsp;&nbsp;
                     <button type="button" class="btn btn-secondary btn-lg" name="btn1" id = "id1" onclick="dugme_klik(this.name)">?</button>
                     &nbsp;&nbsp;
@@ -123,7 +123,7 @@
             <center>
                 <div class = "row">
                     <div class = "col-sm-6">
-                        <button type="button" class="btn btn-dark btn-lg" value="start" onclick="zapocni_igru()">Započni igru</button>
+                        <button type="button" class="btn btn-dark btn-lg" value="start" onclick="zapocni_igru()">Započni</button>
                     </div>
 
                     <div class = "col-sm-6">
@@ -160,103 +160,226 @@
         </div>
 
         <script language="javascript">
+            var redosled = [];
+            var br_sl = 0;
+            var slova = [];
+            var igra_pocela = false;
+            var igra_kraj = false;
+            var trazi_se = 0; /*koji broj se trazi*/
+            var uzeo = [false, false, false, false, false, false];
+
+            /*podesavanja izgleda i funkcionisanja tajmera*/
             var tajmer = $('#tajmer_bar').progressBarTimer({
-                timeLimit: 60,
-                warningThreshold: 20,
+                timeLimit: 90,
+                warningThreshold: 30,
                 smooth: true,
                 baseStyle: 'bg-success',
                 warningStyle: 'bg-danger',
                 completeStyle: '',
                 onFinish:function () {
-                    alert("ENDE");
+                    igra_kraj = true;
+                    kraj_igre();
                 }
             });
-            var red = [];
-            var redosled = [];
-            var br_sl = 0;
 
-            var igra_pocela = false;
-            var igra_kraj = false;
 
+            function isOperacija(izraz) {
+                return izraz == '+' || izraz == '-' || izraz == '*' || izraz == '/';
+            }
+
+            function nextValid(izraz) {
+                if (izraz == "") return {broj: true, otvorena: true, zatvorena: false, operacija: false};
+                var n = izraz.length;
+                if (isOperacija(izraz[n - 1]) || izraz[n - 1] == '(') return {broj: true, otvorena: true, zatvorena: false, operacija: false};
+                var s = 0;
+                var i;
+                for (i = 0; i < n; i++) if (izraz[i] == '(') s++; else if (izraz[i] == ')') s--;
+                if (izraz[n - 1] == ')') return {broj: false, otvorena: false, zatvorena: s > 0, operacija: true};
+                return {broj: false, otvorena: false, zatvorena: s > 0, operacija: true};
+            }
+
+
+            /*zapocinje igru setovanjem tajmera i prikazom generisanih brojeva*/
             function zapocni_igru() {
-                if(!igra_kraj) {
-                    tajmer.start();
-                    igra_pocela = true;
 
-                }
+                    if(!igra_pocela && !igra_kraj) {
+                        tajmer.start();
+                        validiraj();
+                        igra_pocela = true;
+                        while(trazi_se ===0) trazi_se = Math.floor(Math.random() * 1000);
+                        $('#rec_igraca').attr('placeholder', trazi_se);
+                        nmbr1 = Math.floor(Math.random() * 3) + 1;
+                        nmbr1 = nmbr1*5;
+                        prvi_elem = document.getElementById("id4");
+                        prvi_elem.value = nmbr1;
+                        prvi_elem.innerHTML = nmbr1;
+                        nmbr2 = Math.floor(Math.random() * 3) + 1;
+                        nmbr2 = nmbr2*25;
+                        drugi_elem = document.getElementById("id5");
+                        drugi_elem.value = nmbr2;
+                        drugi_elem.innerHTML = nmbr2;
+
+                        for (i = 0; i < 4; i++) {
+                            var elem = document.getElementById("id" + i);
+                            moj_br = Math.floor(Math.random() * 10);
+                            while (moj_br == 0) moj_br = Math.floor(Math.random() * 10);
+                            elem.innerHTML = moj_br;
+                            elem.value = moj_br;
+                        }
+                    }
 
 
+
+            }
+            /*Klikom na bilo koje od 12 dugmadi dodaje se slovo datoj reci
+            * i vrsi se provera da li takva rec postoji u bazi*/
+
+            function validiraj() {
+                slova_kon = slova.join("");
+                var x = nextValid(slova_kon);
+                var i;
+                for (i = 0; i < 6; i++) $('#id' + i).prop('disabled', !x.broj || uzeo[i]);
+                $('#id10').prop('disabled', !x.otvorena);
+                $('#id11').prop('disabled', !x.zatvorena);
+                for (i = 6; i < 10; i++) $('#id' + i).prop('disabled', !x.operacija);
             }
 
             function dugme_klik(ime) {
                 if (igra_pocela && !igra_kraj) {
+                    var tacno = true;
                     if (ime === "btn0"){
-                        redosled.push("id0");
-                        $("#id0").prop('disabled', true);
+
+                        if (tacno) {
+                            redosled.push("id0");
+                            $("#id0").prop('disabled', true);
+                            uzeo[0] = true;
+                        }
                     }
                     if (ime === "btn1") {
-                        redosled.push("id1");
-                        $("#id1").prop('disabled', true);
+
+                        if(tacno) {
+                            redosled.push("id1");
+                            $("#id1").prop('disabled', true);
+                            uzeo[1] = true;
+                        }
                     }
                     if (ime === "btn2") {
-                        redosled.push("id2");
-                        $("#id2").prop('disabled', true);
+
+                        if(tacno){
+                            redosled.push("id2");
+                            $("#id2").prop('disabled', true);
+                            uzeo[2] = true;
+
+                        }
                     }
                     if (ime === "btn3") {
-                        redosled.push("id3");
-                        $("#id3").prop('disabled', true);
+
+                        if(tacno) {
+                            redosled.push("id3");
+                            $("#id3").prop('disabled', true);
+                            uzeo[3] = true;
+
+                        }
                     }
                     if (ime === "btn4") {
-                        redosled.push("id4");
-                        $("#id4").prop('disabled', true);
+
+                        if(tacno) {
+                            redosled.push("id4");
+                            $("#id4").prop('disabled', true);
+                            uzeo[4] = true;
+                        }
                     }
                     if (ime === "btn5") {
-                        redosled.push("id5");
-                        $("#id5").prop('disabled', true);
+
+                        if(tacno) {
+                            redosled.push("id5");
+                            $("#id5").prop('disabled', true);
+                            uzeo[5] = true;
+                        }
                     }
                     if (ime === "btn6") {
-                        redosled.push("id6");
-                        $("#id6").prop('disabled', true);
+
+                        if (tacno)
+                            redosled.push("id6");
+
                     }
                     if (ime === "btn7") {
-                        redosled.push("id7");
-                        $("#id7").prop('disabled', true);
+
+                        if(tacno)
+                            redosled.push("id7");
+
                     }
                     if (ime === "btn8") {
-                        redosled.push("id8");
-                        $("#id8").prop('disabled', true);
+                        if(tacno)
+                            redosled.push("id8");
+
                     }
                     if (ime === "btn9") {
-                        redosled.push("id9");
-                        $("#id9").prop('disabled', true);
+                        if(tacno)
+                            redosled.push("id9");
+
                     }
                     if (ime === "btn10") {
-                        redosled.push("id10");
-                        $("#id10").prop('disabled', true);
+                        if(tacno)
+                            redosled.push("id10");
+
                     }
                     if (ime === "btn11") {
-                        redosled.push("id11");
-                        $("#id11").prop('disabled', true);
+                        if(tacno)
+                            redosled.push("id11");
+
                     }
-                    red.push(document.getElementById(redosled[br_sl]).value);
-                    br_sl++;
-                    red = red.join("");
-                    $('#kombinacija_taster').attr('placeholder', red);
+                    if(tacno) {
+
+                        slova.push(document.getElementById(redosled[br_sl]).value);
+
+                        br_sl++;
+                        slova_kon = slova.join("");
+                        $('#kombinacija_taster').attr('placeholder', slova_kon);
+                        validiraj();
+                    }
 
                 }
             }
 
+            /*Pritiskom na dugme obrisi skida poslednje slovo i proverava da li takva rec
+            * postoji u bazi*/
             function brisi() {
                 if(igra_pocela && !igra_kraj && br_sl != 0) {
                     id = redosled.pop();
-                    red.pop();
+                    slova.pop();
+                    id_broj = id.charAt(2);
+                    id_broj_kon = parseInt(id_broj);
+                    if(id_broj<6) uzeo[id_broj_kon] = false;
                     br_sl--;
-                    red = red.join("");
+                    slova_kon = slova.join("");
 
                     $("#" + id).prop('disabled', false);
-                    $('#kombinacija_taster').attr('placeholder', red);
-                    proveri();
+                    $('#kombinacija_taster').attr('placeholder', slova_kon);
+                    validiraj();
                 }
+            }
+            /*Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
+            * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova*/
+            function kraj_igre() {
+                igra_kraj = true;
+
+
+                tajmer.stop();
+                if (slova_kon === "") res = "Nije definisano";
+                else
+                try{
+
+                    res = eval(slova_kon);
+
+                }
+                catch (e) {
+                    res = 'Nije ispravan izraz';
+                }
+                alert(res);
+
+
+
             }
         </script>
 
