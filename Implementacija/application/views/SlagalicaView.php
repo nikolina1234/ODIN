@@ -14,6 +14,12 @@
 <!-- potrebno za timer -->
 <script src="resources/jquery.progressBarTimer.js"></script>
 
+<?php
+    session_start();
+    $_SESSION['gostime'] = $_POST['gostime'];
+    $_SESSION['poeni'] = 0;
+?>
+
 <div class="container">
 
 
@@ -52,8 +58,14 @@
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
         <div class="col-2">
             <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+                <center>
+                    <label for="name" class="control-label"><?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else echo 'GOST';
+                    ?></label>
+                </center>
+
+                <input type="number" value='0' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
@@ -135,8 +147,13 @@
             <br>
             <br>
             <br>
-
-
+        </div>
+        <div class="col-sm-2">
+            <center>
+                <form action="http://localhost/SlagalicaIgniter/MojBrojController">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </center>
 
         </div>
 
@@ -184,7 +201,7 @@
 
             /*zapocinje igru setovanjem tajmera i prikazom generisanih slova*/
             function zapocni_igru() {
-                    if(!igra_kraj) {
+                    if(!igra_kraj && !igra_pocela) {
                         tajmer.start();
                         igra_pocela = true;
                         for (i = 0; i < 12; i++) {
@@ -302,12 +319,16 @@
             }
             /*Racuna broj poena na serveru na osnovu reci.Poziva se iskljucivo iz funkcije kraj_igre()*/
             function poeni() {
+                alert('usao');
                 var xhttp = new XMLHttpRequest();
-                var rec = "";
-                for (i = 0; i < slova.length; i++) rec += slova[i];
-                xhttp.open("GET", "http://localhost/SlagalicaIgniter/SlagalicaController/word?rec=" + rec, true);
-                xhttp.send(null);
-                alert(xhttp.responseText);
+                // var rec = "";
+                // for (i = 0; i < slova.length; i++) rec += slova[i];
+                xhttp.open("POST", "http://localhost/SlagalicaIgniter/PointsController/update");
+                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send("igra=slagalica&ukupno=50");
+                xhttp.onload = (e) => {
+                    alert(xhttp.responseText);
+                }
             }
         </script>
 

@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 		<div class="container">
 			<div class="row " style="height:14%;background-color:#459BF0;">
 				<div class="col my-auto">
@@ -26,8 +28,8 @@
 			
 				<div class="col-5 text-center border border-dark">
 					
-						<form name="manipulacija">
-						
+						<form name="manipulacija" action="http://localhost/SlagalicaIgniter/SlagalicaController" method="post">
+
 							<table class="table table-hover">
 								<tr>
 									<th class="text-success text-center" colspan="2">
@@ -47,10 +49,14 @@
 								</tr>
 								
 								<tr>
-									
-									<td align="center" colspan="2">
-										<input class="btn btn-secondary btn-outline-dark text-light btn-block" type="submit" value="Igraj">
-									</td>
+							          <td align="center" colspan="2">
+
+
+                                          <input class="btn btn-secondary btn-outline-dark text-light btn-block" type="submit" value="Igraj" name = 'igra'>
+
+                                      </td>
+
+
 								</tr>
 							</table>
 						

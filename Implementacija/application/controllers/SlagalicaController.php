@@ -8,11 +8,13 @@ class SlagalicaController extends CI_Controller
 
     public function index() {
        // $this->load->view('inc/header');
-        $this->load->model('SlagalicaModel');
-        $this->niz = $this->SlagalicaModel->generate();
-        $this->najduza_rec = $this->SlagalicaModel->solve($this->niz);
-        $this->load->view('SlagalicaView',$this->najduza_rec);
-        $this->load->view('inc/footer');
+
+            $this->load->model('SlagalicaModel');
+            $this->niz = $this->SlagalicaModel->generate();
+            $this->najduza_rec = $this->SlagalicaModel->solve($this->niz);
+            $this->load->view('SlagalicaView', $this->najduza_rec);
+            $this->load->view('inc/footer');
+
         //$najduza_rec = $this->SlagalicaModel->solve($niz);
     }
 

@@ -1,4 +1,7 @@
 
+<?php
+    session_start();
+?>
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
@@ -50,10 +53,21 @@
     <!-- Izgled igrice  -->
     <div class="row " style="background-color:#F0F0F0">
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
+
         <div class="col-2">
             <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+                <center>
+                    <label for="name" class="control-label">
+                        <?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else echo 'GOST';
+                        ?>
+                    </label>
+                </center>
+
+                <input type="number"  value = "<?php echo $_SESSION['slagalica'];?>"class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+
+
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
