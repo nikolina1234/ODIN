@@ -2,7 +2,7 @@
 
 session_start();
 
-class PointsController extends CI_Controller
+class PoeniController extends CI_Controller
 {
 
     function update() {
@@ -12,7 +12,8 @@ class PointsController extends CI_Controller
             $poeni = 0;
             if (isset($_POST['ukupno'])) $poeni = intval($_POST['ukupno']);
             $_SESSION[$igra] = $poeni;
-            echo $_SESSION['slagalica'];
+            $_SESSION['uk_poeni'] = $_SESSION['uk_poeni'] + $poeni;
+            echo $_SESSION['uk_poeni'];
         }
     }
 }

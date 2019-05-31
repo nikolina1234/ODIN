@@ -55,19 +55,15 @@
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
 
         <div class="col-2">
-            <div class="form-group">
+            <div class="form-group align-items-center">
                 <center>
-                    <label for="name" class="control-label">
-                        <?php
+                    <label for="name" class="control-label"><?php
                         if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
                         else echo 'GOST';
-                        ?>
-                    </label>
+                        ?></label>
                 </center>
 
-                <input type="number"  value = "<?php echo $_SESSION['slagalica'];?>"class="form-control" id="broj_poena" readonly style = "background-color: blue;">
-
-
+                <input align="center" type="text" value = <?php echo $_SESSION['uk_poeni']?> class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
@@ -170,6 +166,16 @@
             <br>
 
 
+
+
+        </div>
+        <!-- ISPRAVITI ACTION -->
+        <div class="col-sm-2 mt-sm-6">
+            <center>
+                <form action="http://localhost/SlagalicaIgniter/MojBrojController">
+                    <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 400px; display: none">Skočko</button>
+                </form>
+            </center>
 
         </div>
 
@@ -376,21 +382,24 @@
             /*Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
             * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova*/
             function kraj_igre() {
-                igra_kraj = true;
+                if(igra_pocela){
+
+                    igra_kraj = true;
 
 
-                tajmer.stop();
-                if (slova_kon === "") res = "Nije definisano";
-                else
-                try{
+                    tajmer.stop();
+                    if (slova_kon === "") res = "Nije definisano";
+                    else
+                        try{
+                            res = eval(slova_kon);
 
-                    res = eval(slova_kon);
-
+                        }
+                        catch (e) {
+                            res = 'Nije ispravan izraz';
+                        }
+                    alert(res);
+                    $("#kraj").show();
                 }
-                catch (e) {
-                    res = 'Nije ispravan izraz';
-                }
-                alert(res);
 
 
 

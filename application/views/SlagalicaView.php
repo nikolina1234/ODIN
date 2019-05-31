@@ -16,8 +16,8 @@
 
 <?php
     session_start();
-    $_SESSION['gostime'] = $_POST['gostime'];
-    $_SESSION['poeni'] = 0;
+    if(isset($_POST['gostime'])) $_SESSION['gostime'] = $_POST['gostime'];
+    $_SESSION['uk_poeni'] = 0;
 ?>
 
 <div class="container">
@@ -57,7 +57,7 @@
     <div class="row " style="background-color:#F0F0F0">
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
         <div class="col-2">
-            <div class="form-group">
+            <div class="form-group align-items-center">
                 <center>
                     <label for="name" class="control-label"><?php
                         if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
@@ -65,7 +65,7 @@
                     ?></label>
                 </center>
 
-                <input type="number" value='0' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+                <input align="center" type="text" value = <?php echo $_SESSION['uk_poeni']?> class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
@@ -148,10 +148,11 @@
             <br>
             <br>
         </div>
-        <div class="col-sm-2">
+
+        <div class="col-sm-2 mt-sm-6">
             <center>
                 <form action="http://localhost/SlagalicaIgniter/MojBrojController">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 375px; display: none;">Moj Broj</button>
                 </form>
             </center>
 
@@ -289,10 +290,16 @@
             /*Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
             * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova*/
             function kraj_igre() {
-                igra_kraj = true;
-                $('#kompjuter_rec').attr('placeholder', najduza);
-                tajmer.stop();
-                poeni();
+                if(igra_pocela){
+                    igra_kraj = true;
+                    $('#kompjuter_rec').attr('placeholder', najduza);
+                    tajmer.stop();
+
+                    $("#kraj").show();
+                    poeni();
+
+
+                }
             }
             /*Proverava da li trenutna rec postoji u bazi i boji polje u zavisnosti od toga*/
             function proveri() {
@@ -319,16 +326,21 @@
             }
             /*Racuna broj poena na serveru na osnovu reci.Poziva se iskljucivo iz funkcije kraj_igre()*/
             function poeni() {
-                alert('usao');
                 var xhttp = new XMLHttpRequest();
-                // var rec = "";
-                // for (i = 0; i < slova.length; i++) rec += slova[i];
-                xhttp.open("POST", "http://localhost/SlagalicaIgniter/PointsController/update");
-                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhttp.send("igra=slagalica&ukupno=50");
-                xhttp.onload = (e) => {
-                    alert(xhttp.responseText);
+                points = 0;
+                if(slova_kon.length > 0){
+                    points = slova_kon.length*2;
+                    if(najduza==slova_kon) points = points+5;
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=slagalica&ukupno="+points);
+                    xhttp.onload = (e) => {
+
+                    }
                 }
+
+                elem = document.getElementById("broj_poena");
+                elem.value = points;
             }
         </script>
 
