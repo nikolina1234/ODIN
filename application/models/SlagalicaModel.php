@@ -13,9 +13,7 @@ class SlagalicaModel extends CI_Model
     {
         parent::__construct();
         $fajl = fopen("resources/recnik.txt", "r");
-        $this->reci = [];
-        while (($rec = fgets($fajl)) != null) $this->reci[] = trim($rec);
-        fclose($fajl);
+        $this->load->database();
     }
 
     public function generate()
@@ -32,17 +30,24 @@ class SlagalicaModel extends CI_Model
 
     public function validate($user)
     {
-        foreach ($this->reci as $rec) if ($user === $rec) return true;
-        return false;
+        $this->db->where('rec', $user);
+        $query = $this->db->get('slagalica.slagalica');
+
+        echo $query->num_rows();
     }
 
     public function solve($user)
     {
+
+        $sql =  "SELECT * from slagalica.slagalica";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+
         if (sizeof($user) != 12) return null;
         $ret = null;
         $res = 0;
-        foreach ($this->reci as $rec)
-        {
+        foreach ($result as $row){
+            $rec = $row->rec;
             $n = mb_strlen($rec);
             $f = $user;
             $len = 0;
@@ -66,13 +71,10 @@ class SlagalicaModel extends CI_Model
             }
         }
         return $ret;
+
+
     }
 
-    public function poeni($rec){
-        $br_poe = $rec.mb_strlen($rec);
-
-        return $br_poe;
-    }
 }
 
 ?>

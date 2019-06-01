@@ -25,11 +25,6 @@ class SlagalicaController extends CI_Controller
         else echo false;
     }
 
-    public function poeni(){
-        $this->load->model('SlagalicaModel');
-        if($this->SlagalicaModel->validate($this->input->get('word'))){
-            echo $this->SlagalicaModel->poeni($this->input->get('word'));
-        }
-    }
+
 
 }

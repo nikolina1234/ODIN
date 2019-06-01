@@ -312,10 +312,12 @@
                     if(xhttp.responseText == true && slova.length>0){
                         $("#basic-addon1").css('background-color', 'green');
                         $("#basic-addon1").css('color', 'white');
+                        return true;
                     }
                     else {
                         $("#basic-addon1").css('background-color', 'red');
                         $("#basic-addon1").css('color', 'white');
+                        return false;
                     }
                     if(slova.length == 0){
                         $("#basic-addon1").css('background-color', '#ECEFF1');
@@ -328,7 +330,7 @@
             function poeni() {
                 var xhttp = new XMLHttpRequest();
                 points = 0;
-                if(slova_kon.length > 0){
+                if(slova_kon.length > 0 && proveri()){
                     points = slova_kon.length*2;
                     if(najduza==slova_kon) points = points+5;
                     xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
