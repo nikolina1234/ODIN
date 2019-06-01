@@ -212,6 +212,10 @@
 					</div>
 
         </div>
+
+			<div class="col-2 text-center mt-sm-4">
+				<input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Sledeca igra" disabled=true>
+			</div>
 		</div>
 
 		<script>
@@ -240,7 +244,7 @@
 			{
 				komb.push(Math.floor(Math.random() * 6) );
 			}
-			alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
+			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
 			function ubaci(slikaName)
 			{
 				//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
@@ -391,6 +395,106 @@
 					while(uneto.length > 0) {
    				 		uneto.pop();
 					}
+
+					var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
+					}
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1)).style.backgroundColor = '#bbb';
+							}
+					}
+
+					var flag = true;
+
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]!='red')
+						{
+							flag = false;
+							break;
+						}
+					}
+
+					
+					if (flag == true)
+					{						
+							for (p=1;p<7;p++)
+							{
+								 var picture = document.getElementById('id'+p);
+							
+								 picture.style.pointerEvents =  "none";
+							}
+
+							 document.getElementById('sledecaIgra').disabled = false;
+
+							for (i=25;i<29;i++)
+							{
+								switch(komb[i-25])
+								{
+											case 0:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+											break;
+
+											case 1:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+											break;
+
+											case 2:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+											break;
+
+											case 3:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+											break;
+
+											case 4:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+											break;
+
+											case 5:
+											document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+											break;
+
+										
+									
+								}
+							}
+
+					}
+					else
+						{
+							for (i=1;i<7;i++)
+							{
+								var picture = document.getElementById('id'+i);
+
+								picture.style.pointerEvents = 'auto';
+							}
+						}
 				}
 				else
 					if(id=='b2')
@@ -421,6 +525,103 @@
 
 						while(uneto.length > 0) {
    				 		uneto.pop();
+						}
+						var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1 +4)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1 +4)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
+					}
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1 +4)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1 +4)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1 +4)).style.backgroundColor = '#bbb';
+							}
+					}
+
+					var flag = true;
+
+						for (i=0;i<4;i++)
+						{
+							if (boje[i]!='red')
+							{
+								flag = false;
+								break;
+							}
+						}
+
+						if (flag == true)
+						{
+								for (i=1;i<7;i++)
+								{
+									document.getElementById('id'+i).picture.style.pointerEvents = 'none';
+								}
+
+								document.getElementById('sledecaIgra').disabled = false;
+
+								for (i=25;i<29;i++)
+								{
+									switch(komb[i-25])
+									{
+												case 0:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+												alert("Herc");
+												break;
+
+												case 1:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+												break;
+
+												case 2:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+												break;
+
+												case 3:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+												break;
+
+												case 4:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+												break;
+
+												case 5:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+												break;
+	
+												
+										
+									}
+								}
+
+						}
+						else
+						{
+							for (i=1;i<7;i++)
+							{
+								var picture = document.getElementById('id'+i);
+
+								picture.style.pointerEvents = 'auto';
+							}
 						}
 					}
 					else
@@ -453,6 +654,104 @@
 						while(uneto.length > 0) {
    				 		uneto.pop();
 					}
+					var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1 +8)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1 +8)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
+					}
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1 +8)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1 +8)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1 +8)).style.backgroundColor = '#bbb';
+							}
+					}
+
+					var flag = true;
+
+						for (i=0;i<4;i++)
+						{
+							if (boje[i]!='red')
+							{
+								flag = false;
+								break;
+							}
+						}
+
+						if (flag == true)
+						{
+								for (i=1;i<7;i++)
+								{
+									var picture = document.getElementById('id'+i);
+
+									picture.style.pointerEvents = 'none';
+								}
+
+								document.getElementById('sledecaIgra').disabled = false;
+
+								for (i=25;i<29;i++)
+								{
+									switch(komb[i-25])
+									{
+												case 0:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+												break;
+
+												case 1:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+												break;
+
+												case 2:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+												break;
+
+												case 3:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+												break;
+
+												case 4:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+												break;
+
+												case 5:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+												break;
+
+											
+										
+									}
+								}
+
+						}
+						else
+						{
+							for (i=1;i<7;i++)
+							{
+								var picture = document.getElementById('id'+i);
+
+								picture.style.pointerEvents = 'auto';
+							}
+						}
 					}
 					else
 					if(id=='b4')
@@ -483,6 +782,104 @@
 						while(uneto.length > 0) {
    				 		uneto.pop();
 					}
+					var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1 +12)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1 +12)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
+					}
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1 +12)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1 +12)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1 +12)).style.backgroundColor = '#bbb';
+							}
+					}
+
+					var flag = true;
+
+for (i=0;i<4;i++)
+{
+	if (boje[i]!='red')
+	{
+		flag = false;
+		break;
+	}
+}
+
+if (flag == true)
+{
+		for (i=1;i<7;i++)
+		{
+			var picture = document.getElementById('id'+i);
+
+			picture.style.pointerEvents = 'none';
+		}
+
+		document.getElementById('sledecaIgra').disabled = false;
+
+		for (i=25;i<29;i++)
+		{
+			switch(komb[i-25])
+			{
+						case 0:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+						break;
+
+						case 1:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+						break;
+
+						case 2:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+						break;
+
+						case 3:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+						break;
+
+						case 4:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+						break;
+
+						case 5:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+						break;
+
+					
+				
+			}
+		}
+
+}
+else
+{
+	for (i=1;i<7;i++)
+	{
+		var picture = document.getElementById('id'+i);
+
+		picture.style.pointerEvents = 'auto';
+	}
+}
 					}
 				else
 					if(id=='b5')
@@ -514,6 +911,104 @@
 						while(uneto.length > 0) {
    				 		uneto.pop();
 					}
+					var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1+16)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1+16)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
+					}
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1+16)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1+16)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1+16)).style.backgroundColor = '#bbb';
+							}
+					}
+
+					var flag = true;
+
+						for (i=0;i<4;i++)
+						{
+							if (boje[i]!='red')
+							{
+								flag = false;
+								break;
+							}
+						}
+
+						if (flag == true)
+						{
+								for (i=1;i<7;i++)
+								{
+									var picture = document.getElementById('id'+i);
+
+									picture.style.pointerEvents = 'none';
+								}
+
+								document.getElementById('sledecaIgra').disabled = false;
+
+								for (i=25;i<29;i++)
+								{
+									switch(komb[i-25])
+									{
+												case 0:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+												break;
+
+												case 1:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+												break;
+
+												case 2:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+												break;
+
+												case 3:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+												break;
+
+												case 4:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+												break;
+
+												case 5:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+												break;
+
+											
+										
+									}
+								}
+
+						}
+						else
+						{
+							for (i=1;i<7;i++)
+							{
+								var picture = document.getElementById('id'+i);
+
+								picture.style.pointerEvents = 'auto';
+							}
+						}
 					}
 					else if(id=='b6')
 						{
@@ -544,13 +1039,99 @@
 						while(uneto.length > 0) {
    				 		uneto.pop();
 					}
+					var boje = new Array('empty','empty','empty','empty');
+
+					var iter = 0;
+
+					for (i=0;i<4;i++)
+					{
+						if (document.getElementById('c'+(i+1+20)).style.backgroundColor == 'red')
+						{
+							boje[iter++] = 'red';
+						}
+						else
+						if (document.getElementById('c'+(i+1+20)).style.backgroundColor == 'yellow')
+						{
+							boje[iter++] = 'yellow';
+						}
 					}
-				for (i=1;i<7;i++)
+					for (i=0;i<4;i++)
+					{
+						if (boje[i]=='red')
+						{
+							document.getElementById('c'+(i+1+20)).style.backgroundColor = 'red';
+						}
+						else
+						if (boje[i]=='yellow')
+						{
+							document.getElementById('c'+(i+1+20)).style.backgroundColor = 'yellow';
+						}
+						else
+							{
+								document.getElementById('c'+(i+1+20)).style.backgroundColor = '#bbb';
+							}
+					}
+					var flag = true;
+
+for (i=0;i<4;i++)
+{
+	if (boje[i]!='red')
+	{
+		flag = false;
+		break;
+	}
+}
+
+
+		for (i=1;i<7;i++)
+		{
+			var picture = document.getElementById('id'+i);
+
+			picture.style.pointerEvents = 'none';
+		}
+
+		document.getElementById('sledecaIgra').disabled = false;
+
+		for (i=25;i<29;i++)
+		{
+			switch(komb[i-25])
+			{
+						case 0:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+						break;
+
+						case 1:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+						break;
+
+						case 2:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+						break;
+
+						case 3:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+						break;
+
+						case 4:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+						break;
+
+						case 5:
+						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+						break;
+
+					
+				
+			}
+		
+	}
+					}
+				/*for (i=1;i<7;i++)
 					{
 						var picture = document.getElementById('id'+i);
 
 						picture.style.pointerEvents = 'auto';
-					}
+					}*/
 			}
 
 			/**
