@@ -1,6 +1,7 @@
 
 <?php
     session_start();
+    $_SESSION['uk_poeni'] = $_SESSION['slagalica'];
 ?>
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -18,8 +19,6 @@
 <script src="resources/jquery.progressBarTimer.js"></script>
 
 <div class="container">
-
-
 
     <!-- Kao zaglavlje za ime igre i pravila igre-->
     <div class="row " style="height:10%;background-color:#459BF0;">
@@ -169,24 +168,40 @@
 
 
         </div>
+        <div class="col-2">
+
         <!-- ISPRAVITI ACTION -->
-        <div class="col-sm-2 mt-sm-6">
+        <div class="col-sm-4 mt-sm-6">
             <center>
-                <form action="http://localhost/SlagalicaIgniter/MojBrojController">
-                    <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 400px; display: none">Skočko</button>
+                <div class="form-group align-items-center" style="margin-top: 250px;">
+                    <center>
+                        <label for="name" class="control-label" id="teksts" style="margin-left: 43px; display: none;">
+                            Dobili ste:
+                            </label>
+
+
+                    <input align="center" type="text" id = "dobio_je" class="form-control" id="broj_poena" readonly style = "background-color: #0B0B3B; width: 70px; height:70px; margin-left: 32px;color: white; font-size: 25px; display: none;">
+                    </center>
+                </div>
+                <form action="http://localhost/SlagalicaIgniter/PoeniController/points">
+                    <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 50px; display: none; margin-left: 18px;">Skočko</button>
                 </form>
             </center>
 
         </div>
 
+
+
         <script language="javascript">
             var redosled = [];
             var br_sl = 0;
+            var points_kon = 0;
             var slova = [];
             var igra_pocela = false;
             var igra_kraj = false;
             var trazi_se = 0; /*koji broj se trazi*/
             var uzeo = [false, false, false, false, false, false];
+
 
             /*podesavanja izgleda i funkcionisanja tajmera*/
             var tajmer = $('#tajmer_bar').progressBarTimer({
@@ -203,14 +218,14 @@
             });
 
 
-            function isOperacija(izraz) {
+            function is_operacija(izraz) {
                 return izraz == '+' || izraz == '-' || izraz == '*' || izraz == '/';
             }
 
-            function nextValid(izraz) {
+            function next_valid(izraz) {
                 if (izraz == "") return {broj: true, otvorena: true, zatvorena: false, operacija: false};
                 var n = izraz.length;
-                if (isOperacija(izraz[n - 1]) || izraz[n - 1] == '(') return {broj: true, otvorena: true, zatvorena: false, operacija: false};
+                if (is_operacija(izraz[n - 1]) || izraz[n - 1] == '(') return {broj: true, otvorena: true, zatvorena: false, operacija: false};
                 var s = 0;
                 var i;
                 for (i = 0; i < n; i++) if (izraz[i] == '(') s++; else if (izraz[i] == ')') s--;
@@ -229,7 +244,7 @@
                         while(trazi_se ===0) trazi_se = Math.floor(Math.random() * 1000);
                         $('#rec_igraca').attr('placeholder', trazi_se);
                         nmbr1 = Math.floor(Math.random() * 3) + 1;
-                        nmbr1 = nmbr1*5;
+                        nmbr1 = nmbr1*5 + 5;
                         prvi_elem = document.getElementById("id4");
                         prvi_elem.value = nmbr1;
                         prvi_elem.innerHTML = nmbr1;
@@ -256,7 +271,7 @@
 
             function validiraj() {
                 slova_kon = slova.join("");
-                var x = nextValid(slova_kon);
+                var x = next_valid(slova_kon);
                 var i;
                 for (i = 0; i < 6; i++) $('#id' + i).prop('disabled', !x.broj || uzeo[i]);
                 $('#id10').prop('disabled', !x.otvorena);
@@ -388,17 +403,50 @@
 
 
                     tajmer.stop();
-                    if (slova_kon === "") res = "Nije definisano";
+                    if (slova_kon === "") res = "X";
                     else
                         try{
-                            res = eval(slova_kon);
+                           res = eval(slova_kon);
 
                         }
                         catch (e) {
-                            res = 'Nije ispravan izraz';
+                            res = 'X';
                         }
-                    alert(res);
+
+                    elem = document.getElementById("dobio_je");
+                    elem.innerHTML = res;
+                    elem.value = res;
+
+                    points = 0;
+                    if(res !== "X"){
+                        if(res === trazi_se) points = 30;
+                        else{
+                            razlika = trazi_se - res;
+                            if(razlika < 0) razlika = razlika*(-1);
+                            if(razlika <= 10) points = 20;
+                            else if(razlika <= 20) points = 10;
+                        }
+                    }
+
+                    var xhttp = new XMLHttpRequest();
+
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=moj_broj&ukupno="+points);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + points;
+
+
                     $("#kraj").show();
+                    $("#dobio_je").show();
+                    $("#teksts").show();
+
                 }
 
 

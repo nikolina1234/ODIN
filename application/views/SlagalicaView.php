@@ -18,6 +18,7 @@
     session_start();
     if(isset($_POST['gostime'])) $_SESSION['gostime'] = $_POST['gostime'];
     $_SESSION['uk_poeni'] = 0;
+
 ?>
 
 <div class="container">
@@ -65,7 +66,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" type="text" value = <?php echo $_SESSION['uk_poeni']?> class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
@@ -161,6 +162,7 @@
         <script lang="javascript">
 
             var redosled = [];
+            var moze = false;
             var br_sl = 0;
             var slova = [];
             var igra_pocela = false;
@@ -312,33 +314,38 @@
                     if(xhttp.responseText == true && slova.length>0){
                         $("#basic-addon1").css('background-color', 'green');
                         $("#basic-addon1").css('color', 'white');
-                        return true;
+                        moze = true;
                     }
                     else {
                         $("#basic-addon1").css('background-color', 'red');
                         $("#basic-addon1").css('color', 'white');
-                        return false;
+                        moze = false;
                     }
                     if(slova.length == 0){
                         $("#basic-addon1").css('background-color', '#ECEFF1');
                         $("#basic-addon1").css('color', '#333333');
+                        moze = false;
                     }
                 }
 
             }
             /*Racuna broj poena na serveru na osnovu reci.Poziva se iskljucivo iz funkcije kraj_igre()*/
             function poeni() {
-                var xhttp = new XMLHttpRequest();
+                proveri();
                 points = 0;
-                if(slova_kon.length > 0 && proveri()){
+                if(moze){
+
                     points = slova_kon.length*2;
                     if(najduza==slova_kon) points = points+5;
-                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                    xhttp.send("igra=slagalica&ukupno="+points);
-                    xhttp.onload = (e) => {
 
-                    }
+                }
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send("igra=slagalica&ukupno="+points);
+                xhttp.onload = (e) => {
+
                 }
 
                 elem = document.getElementById("broj_poena");

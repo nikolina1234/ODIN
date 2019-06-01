@@ -10,10 +10,17 @@ class PoeniController extends CI_Controller
         if (isset($_POST['igra'])) {
             $igra = $_POST['igra'];
             $poeni = 0;
-            if (isset($_POST['ukupno'])) $poeni = intval($_POST['ukupno']);
+            if (isset($_POST['ukupno'])){
+                $poeni = intval($_POST['ukupno']);
+                $_SESSION['uk_poeni'] = $_SESSION['uk_poeni'] + $poeni;
+            }
             $_SESSION[$igra] = $poeni;
-            $_SESSION['uk_poeni'] = $_SESSION['uk_poeni'] + $poeni;
+            //$_SESSION['uk_poeni'] = $_SESSION['uk_poeni'] + $poeni;
             echo $_SESSION['uk_poeni'];
         }
+    }
+
+    function points(){
+        $this->load->view('PoeniView');
     }
 }
