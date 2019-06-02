@@ -17,6 +17,7 @@
 <?php
     session_start();
     if(isset($_POST['gostime'])) $_SESSION['gostime'] = $_POST['gostime'];
+    if(isset($_POST['hellouser'])) $_SESSION['hellouser'] = $_POST['hellouser'];
     $_SESSION['uk_poeni'] = 0;
 
 ?>
@@ -62,7 +63,9 @@
                 <center>
                     <label for="name" class="control-label"><?php
                         if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
-                        else echo 'GOST';
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                                echo 'GOST';
                     ?></label>
                 </center>
 
@@ -160,6 +163,36 @@
         </div>
 
         <script lang="javascript">
+            /*var lat = [['a','a'],
+                ['б','b'],
+                ['в','v'],
+                ['г','g'],
+                ['д','d'],
+                ['ђ','đ'],
+                ['е','e'],
+                ['ж','ž'],
+                ['з','z'],
+                ['и','i'],
+                ['ј','j'],
+                ['к','k'],
+                ['л','l'],
+                ['љ','lj'],
+                ['м','m'],
+                ['н','n'],
+                ['њ','nj'],
+                ['о','o'],
+                ['п','p'],
+                ['р','r'],
+                ['с','s'],
+                ['т','t'],
+                ['ћ','ć'],
+                ['у','u'],
+                ['ф','f'],
+                ['х','h'],
+                ['ц','c'],
+                ['ч','č'],
+                ['џ','dž'],
+                ['ш','š']];*/
 
             var redosled = [];
             var moze = false;
@@ -170,7 +203,7 @@
             var najduza =<?php
                echo "\"".$this->najduza_rec."\"";
             ?>
-        /*podesavanja izgleda i funkcionisanja tajmera*/
+   /*podesavanja izgleda i funkcionisanja tajmera*/
             var tajmer = $('#tajmer_bar').progressBarTimer({
                 timeLimit: 60,
                 warningThreshold: 20,

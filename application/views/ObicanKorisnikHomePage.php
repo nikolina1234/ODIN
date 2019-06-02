@@ -37,7 +37,7 @@
 								<tr>
 									
 									<td align="center">
-										<form method="post" action="http://localhost/SlagalicaIgniter/IgraController/playGame">
+										<form method="post" action="http://localhost/SlagalicaIgniter/SlagalicaController">
 											<input class="btn btn-secondary btn-outline-dark text-light btn-block" type="submit" value="Igraj">
 										</form>
 									</td>

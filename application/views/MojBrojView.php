@@ -58,7 +58,9 @@
                 <center>
                     <label for="name" class="control-label"><?php
                         if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
-                        else echo 'GOST';
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                            echo 'GOST';
                         ?></label>
                 </center>
 
