@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
@@ -68,7 +72,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input align="center" value = <?php echo $_SESSION['uk_poeni']?>    type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		

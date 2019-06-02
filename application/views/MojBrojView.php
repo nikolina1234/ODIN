@@ -185,7 +185,7 @@
                     <input align="center" type="text" id = "dobio_je" class="form-control" id="broj_poena" readonly style = "background-color: #0B0B3B; width: 70px; height:70px; margin-left: 32px;color: white; font-size: 25px; display: none;">
                     </center>
                 </div>
-                <form action="http://localhost/SlagalicaIgniter/PoeniController/points">
+                <form action="http://localhost/SlagalicaIgniter/SkockoController/Skocko">
                     <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 50px; display: none; margin-left: 18px;">Skočko</button>
                 </form>
             </center>
