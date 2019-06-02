@@ -120,6 +120,11 @@
 			<div class="col-2" align="center">
 			    <br>
 			    <button class="btn btn-primary">Ne znam</button>
+				<br>
+				<br>
+				<form method="post" action="http://localhost/SlagalicaIgniter/SpojniceController/Spojnice">
+			       <input type="submit" class="btn btn-secondary" value="Sledeca igra">
+				</form>
 			</div>
 		</div>
 </div>
