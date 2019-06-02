@@ -33,7 +33,10 @@ $d1 = $_SESSION['d1'];
 $d2 = $_SESSION['d2'];
 $d3 = $_SESSION['d3'];
 $d4 = $_SESSION['d4'];
-$hello = "Hello";
+$akonacno = $_SESSION['a_konacno'];
+$bkonacno = $_SESSION['b_konacno'];
+$ckonacno = $_SESSION['c_konacno'];
+$dkonacno = $_SESSION['d_konacno'];
 ?>
 
 <div class="container">
@@ -111,12 +114,12 @@ $hello = "Hello";
 		   </div>
 		   <br>
 		   <div class="row">
-		      <div class="offset-2 col-2" align="right"><input type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi A" onclick="proveriA()"></div>
+		      <div class="offset-2 col-2" align="right"><input id="dugmeA" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi A" onclick="proveriA()"></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="A" placeholder="A"></div>
 			  <div class="col-1"></div>
 			  <div class="col-1"><input type="text" size="10" maxlength="20" id="B" placeholder="B"></div>
 			  <div class="col-1"></div>
-			  <div class="col-2"><input type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi B" onclick="proveriB()"></div>
+			  <div class="col-2"><input id="dugmeB" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi B" onclick="proveriB()"></div>
 			  <div class="col-2"></div>
 		   </div>
 		   <br>
@@ -124,17 +127,18 @@ $hello = "Hello";
 		     <div class="col-3"></div>
 			 <div class="col-2"></div>
 			 <div class="col-2" align="center"><input id="Konacno" type="text" size="15"  maxlength="20" placeholder="Konacno"></div>
-			 <div class="col-2"><input type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi Konacno"  align="right" onclick="proveriKonacno()"></div>
-			 <div class="col-3"></div>
+			 <div class="col-1"></div>
+			 <div class="col-2"><input id="dugmeKon" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi Konacno"  align="right" onclick="proveriKonacno()"></div>
+			 <div class="col-2"></div>
 		   </div>
 		   <br>
 		   <div class="row">
-		   <div class="offset-2 col-2" align="right"><input type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi C" onclick="proveriC()"></div>
+		   <div class="offset-2 col-2" align="right"><input id="dugmeC" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi C" onclick="proveriC()"></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="C" placeholder="C"></div>
 			  <div class="col-1"></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="D" placeholder="D"></div>
 			  <div class="col-1"></div>
-			  <div class="col-2"><input type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi D"  onclick="proveriD()"></div>
+			  <div class="col-2"><input id="dugmeD" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi D"  onclick="proveriD()"></div>
 			  <div class="col-2"></div>
 		   </div>
 		   <br>
@@ -223,81 +227,97 @@ $hello = "Hello";
 			case 'A1':
 			var a1 = "<?php echo $a1;?>"
 			document.getElementById(id).innerHTML = a1;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'A2':
 			var a2 = "<?php echo $a2;?>"
 			document.getElementById(id).innerHTML = a2;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 			
 			case 'A3':
 			var a3 = "<?php echo $a3;?>"
 			document.getElementById(id).innerHTML = a3;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'A4':
 			var a4 = "<?php echo $a4;?>"
 			document.getElementById(id).innerHTML = a4;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B1':
 			var b1 = "<?php echo $b1;?>"
 			document.getElementById(id).innerHTML = b1;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B2':
 			var b2 = "<?php echo $b2;?>"
 			document.getElementById(id).innerHTML = b2;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B3':
 			var b3 = "<?php echo $b3;?>"
 			document.getElementById(id).innerHTML = b3;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B4':
 			var b4 = "<?php echo $b4;?>"
 			document.getElementById(id).innerHTML = b4;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C1':
 			var c1 = "<?php echo $c1;?>"
 			document.getElementById(id).innerHTML = c1;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C2':
 			var c2 = "<?php echo $c2;?>"
 			document.getElementById(id).innerHTML = c2;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C3':
 			var c3 = "<?php echo $c3;?>"
 			document.getElementById(id).innerHTML = c3;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C4':
 			var c4 = "<?php echo $c4;?>"
 			document.getElementById(id).innerHTML = c4;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D1':
 			var d1 = "<?php echo $d1;?>"
 			document.getElementById(id).innerHTML = d1;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D2':
 			var d2 = "<?php echo $d2;?>"
 			document.getElementById(id).innerHTML = d2;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D3':
 			var d3 = "<?php echo $d3;?>"
 			document.getElementById(id).innerHTML = d3;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D4':
 			var d4 = "<?php echo $d4;?>"
 			document.getElementById(id).innerHTML = d4;
+			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 		}
 
@@ -308,8 +328,11 @@ $hello = "Hello";
 	function proveriA()
 		{
 			var inputBox = document.getElementById('A');
+			var str = "<?php echo $_SESSION['a_konacno']; ?>"
+			var res = str.toLowerCase();
+			var res1 = str.toUpperCase();
 
-			if (inputBox.value == "<?php  echo $_SESSION['a_konacno']  ?>")
+			if (inputBox.value == "<?php  echo $_SESSION['a_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -331,14 +354,23 @@ $hello = "Hello";
 					var a4 = "<?php echo $a4;?>"
 			        document.getElementById('A'+i).innerHTML = a4;}
 				}
+				var dugme = document.getElementById("dugmeA");
+				dugme.disabled = true;
+			}
+			else 
+			{
+				inputBox.value="";
 			}
 
 		}
 		function proveriB()
 		{
 			var inputBox = document.getElementById('B');
+			var str = "<?php echo $_SESSION['b_konacno']; ?>"
+			var res = str.toLowerCase();
+			var res1 = str.toUpperCase();
 
-			if (inputBox.value == "<?php  echo $_SESSION['b_konacno']  ?>")
+			if (inputBox.value == "<?php  echo $_SESSION['b_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -360,6 +392,12 @@ $hello = "Hello";
 					var b4 = "<?php echo $b4;?>"
 			        document.getElementById('B'+i).innerHTML = b4;}
 				}
+				var dugme = document.getElementById("dugmeB");
+				dugme.disabled = true;
+			}
+			else
+			{
+				inputBox.value="";
 			}
 
 		}
@@ -368,8 +406,11 @@ $hello = "Hello";
 		function proveriC()
 		{
 			var inputBox = document.getElementById('C');
+			var str = "<?php echo $_SESSION['c_konacno']; ?>"
+			var res = str.toLowerCase();
+			var res1 = str.toUpperCase();
 
-			if (inputBox.value == "<?php  echo $_SESSION['c_konacno']  ?>")
+			if (inputBox.value == "<?php  echo $_SESSION['c_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -391,6 +432,12 @@ $hello = "Hello";
 					var c4 = "<?php echo $c4;?>"
 			        document.getElementById('C'+i).innerHTML = c4;}
 				}
+				var dugme = document.getElementById("dugmeC");
+				dugme.disabled = true;
+			}
+			else 
+			{
+				inputBox.value="";
 			}
 
 		}
@@ -399,8 +446,11 @@ $hello = "Hello";
 		function proveriD()
 		{
 			var inputBox = document.getElementById('D');
+			var str = "<?php echo $_SESSION['d_konacno']; ?>"
+			var res = str.toLowerCase();
+			var res1 = str.toUpperCase();
 
-			if (inputBox.value == "<?php  echo $_SESSION['d_konacno']  ?>")
+			if (inputBox.value == "<?php  echo $_SESSION['d_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -422,6 +472,12 @@ $hello = "Hello";
 					var d4 = "<?php echo $d4;?>"
 			        document.getElementById('D'+i).innerHTML = d4;}
 				}
+				var dugme = document.getElementById("dugmeD");
+				dugme.disabled = true;
+			}
+			else
+			{
+				inputBox.value="";
 			}
 
 		}
@@ -429,9 +485,13 @@ $hello = "Hello";
 		function proveriKonacno()
 		{
 			var inputBox = document.getElementById('Konacno');
+			var str = "<?php echo $_SESSION['asoc_konacno']; ?>"
+			var res = str.toLowerCase();
+			var res1 = str.toUpperCase();
 
-			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>")
+			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				inputBox.value = str;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 				for (i=1;i<5;i++)
@@ -449,7 +509,8 @@ $hello = "Hello";
 			        document.getElementById('D'+i).innerHTML = d3;}
 					else {
 					var d4 = "<?php echo $d4;?>"
-			        document.getElementById('D'+i).innerHTML = d4;}
+			        document.getElementById('D'+i).innerHTML = d4;
+					}
 
 
 
@@ -509,17 +570,35 @@ $hello = "Hello";
 
 				}	
 				inputBox = 	document.getElementById('A');
+				inputBox.value = "<?php echo $akonacno;?>"
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 				inputBox = 	document.getElementById('B');
+				inputBox.value = "<?php echo $bkonacno;?>"
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 				inputBox = 	document.getElementById('C');
+				inputBox.value = "<?php echo $ckonacno;?>"
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 				inputBox = 	document.getElementById('D');
+				inputBox.value = "<?php echo $dkonacno;?>"
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
+				
+				var dugme = document.getElementById("dugmeA");
+				dugme.disabled = true;
+				dugme = document.getElementById("dugmeB");
+				dugme.disabled = true;
+				dugme = document.getElementById("dugmeC");
+				dugme.disabled = true;
+				dugme = document.getElementById("dugmeD");
+				dugme.disabled = true;
+				dugme = document.getElementById("dugmeKon");
+				dugme.disabled = true;
+			}
+			else{
+				inputBox.value="";
 			}
 
 		}
