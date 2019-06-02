@@ -226,7 +226,9 @@
         </div>
 
 			<div class="col-2 text-center mt-sm-4">
-				<input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Sledeca igra" disabled=true>
+				<form method="post" action="http://localhost/SlagalicaIgniter/KoZnaZnaController/KoZnaZna">
+				    <input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Sledeca igra" disabled=true>
+				</form>
 			</div>
 		</div>
 
@@ -256,8 +258,7 @@
 
 			for (j=0;j<4;j++)
 			{
-				//komb.push(Math.floor(Math.random() * 6) );
-				komb.push(0);
+				komb.push(Math.floor(Math.random() * 6) );	
 			}
 			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
 			function ubaci(slikaName)
