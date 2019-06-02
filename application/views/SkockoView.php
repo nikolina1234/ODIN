@@ -58,9 +58,17 @@
 		
 		<div class="row h-60" style="background-color:#F0F0F0">
 		     <div class="col-2">
-            <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+			 <div class="form-group align-items-center">
+                <center>
+                    <label for="name" class="control-label"><?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                                echo 'GOST';
+                    ?></label>
+                </center>
+
+                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		
@@ -219,6 +227,8 @@
 		</div>
 
 		<script>
+
+		var poeni = 0;
 			/**
 			 * Herc - 0
 			 * Karo - 1
@@ -242,7 +252,8 @@
 
 			for (j=0;j<4;j++)
 			{
-				komb.push(Math.floor(Math.random() * 6) );
+				//komb.push(Math.floor(Math.random() * 6) );
+				komb.push(0);
 			}
 			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
 			function ubaci(slikaName)
@@ -442,7 +453,10 @@
 
 					
 					if (flag == true)
-					{						
+					{				
+
+							poeni = 15;	
+
 							for (p=1;p<7;p++)
 							{
 								 var picture = document.getElementById('id'+p);
@@ -483,6 +497,16 @@
 										
 									
 								}
+							}
+
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
 							}
 
 					}
@@ -572,9 +596,12 @@
 
 						if (flag == true)
 						{
+
+							poeni = 14;
+
 								for (i=1;i<7;i++)
 								{
-									document.getElementById('id'+i).picture.style.pointerEvents = 'none';
+									document.getElementById('id'+i).style.pointerEvents = 'none';
 								}
 
 								document.getElementById('sledecaIgra').disabled = false;
@@ -700,6 +727,9 @@
 
 						if (flag == true)
 						{
+
+							poeni = 13;
+
 								for (i=1;i<7;i++)
 								{
 									var picture = document.getElementById('id'+i);
@@ -828,6 +858,9 @@ for (i=0;i<4;i++)
 
 if (flag == true)
 {
+
+	poeni = 12;
+	
 		for (i=1;i<7;i++)
 		{
 			var picture = document.getElementById('id'+i);
@@ -957,6 +990,8 @@ else
 
 						if (flag == true)
 						{
+
+							poeni = 11;
 								for (i=1;i<7;i++)
 								{
 									var picture = document.getElementById('id'+i);
@@ -1120,18 +1155,14 @@ for (i=0;i<4;i++)
 						document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
 						break;
 
-					
+					}					
 				
 			}
-		
-	}
+			if (flag) poeni = 10;
+			else
+				poeni = 0;
 					}
-				/*for (i=1;i<7;i++)
-					{
-						var picture = document.getElementById('id'+i);
 
-						picture.style.pointerEvents = 'auto';
-					}*/
 			}
 
 			/**
