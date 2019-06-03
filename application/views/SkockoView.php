@@ -102,6 +102,7 @@
 						 <div class="col-3" ><img  id="4"src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					    <div class="col-1"><input id="bb1" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()"></div>
 					  	<div class="col-1"> <input id="b1" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b1')"></div>
 					  <div class="col-4">
 					      <div id="c1" class="circle" ></div>
@@ -120,6 +121,7 @@
 						 <div class="col-3" ><img id="8" src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					  <div class="col-1"><input id="bb2" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()" disabled=true></div>
 					  <div class="col-1"> <input id="b2" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b2')"></div>
 					  <div class="col-4"><div id="c5" class="circle" ></div>
 						  <div id="c6" class="circle" ></div>
@@ -137,6 +139,7 @@
 						 <div class="col-3" ><img id="12" src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					  <div class="col-1"><input id="bb3" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()" disabled=true></div>
 					  <div class="col-1"> <input id="b3" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b3')"></div>
 					  <div class="col-4"><div id="c9" class="circle" ></div>
 						  <div id="c10" class="circle" ></div>
@@ -155,6 +158,7 @@
 						 <div class="col-3" ><img id="16" src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					  <div class="col-1"><input id="bb4" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()" disabled=true></div>
 					  <div class="col-1"> <input id="b4" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b4')"></div>
 					  <div class="col-4"><div id="c13" class="circle" ></div>
 						  <div id="c14" class="circle" ></div>
@@ -172,6 +176,7 @@
 						 <div class="col-3" ><img id="20" src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					  <div class="col-1"><input id="bb5" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()" disabled=true></div>
 					  <div class="col-1"> <input id="b5" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b5')"></div>
 					  <div class="col-4"><div id="c17" class="circle" ></div>
 						  <div id="c18" class="circle" ></div>
@@ -189,6 +194,7 @@
 						 <div class="col-3" ><img id="24" src="http://localhost/SlagalicaIgniter/application/views/images/white.jpg" alt="skocko" width="100%" style="align:center;"></div>
 						 </div>
 					  </div>
+					  <div class="col-1"><input id="bb6" class="btn btn-secondary" type="button" value="Vrati" onclick="vrati()" disabled=true></div>
 					  <div class="col-1"> <input id="b6" class="btn btn-secondary" type="button" value="Potvrdi" disabled=true onclick="enableAgain('b6')"></div>
 					  <div class="col-4"><div id="c21" class="circle" ></div>
 						  <div id="c22" class="circle" ></div>
@@ -260,7 +266,28 @@
 			{
 				komb.push(Math.floor(Math.random() * 6) );	
 			}
+			/*komb.push(0);
+			komb.push(0);
+			komb.push(0);
+			komb.push(0);*/
 			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
+			function vrati()
+			{
+				//alert("usao");
+				if(br!=1 && br!=5 && br!=9 && br!=13 && br!=17 && br!=21 && br!=25)
+				{
+				var br1 = br-1;
+				var slika = document.getElementById(br1).src;
+				//alert(slika);
+				if(slika != 'http://localhost/SlagalicaIgniter/application/views/images/white.jpg')
+				{
+					document.getElementById(br1).src = 'http://localhost/SlagalicaIgniter/application/views/images/white.jpg';
+					br--;
+					uneto.pop();
+				}
+				}
+			}
+			
 			function ubaci(slikaName)
 			{
 				//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
@@ -308,6 +335,9 @@
 							}
 							var dugme = document.getElementById('b1');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb1');
+							dugme.disabled = true;
+							
 
 							break;
 
@@ -320,6 +350,9 @@
 							}
 							var dugme = document.getElementById('b2');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb2');
+							dugme.disabled = true;
+							
 
 							break;
 
@@ -332,6 +365,9 @@
 							}
 							var dugme = document.getElementById('b3');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb3');
+							dugme.disabled = true;
+							
 
 							break;
 
@@ -344,6 +380,9 @@
 							}
 							var dugme = document.getElementById('b4');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb4');
+							dugme.disabled = true;
+							
 
 							break;
 
@@ -356,6 +395,9 @@
 							}
 							var dugme = document.getElementById('b5');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb5');
+							dugme.disabled = true;
+							
 
 							break;
 
@@ -368,6 +410,8 @@
 							}
 							var dugme = document.getElementById('b6');
 							dugme.disabled = false;
+							dugme = document.getElementById('bb6');
+							dugme.disabled = true;
 
 							break;
 				}
@@ -379,11 +423,14 @@
 
 				var dugme = document.getElementById(id);
 				dugme.disabled = true;
+				
 
 				
 
 				if(id=='b1')
 				{
+					dugme = document.getElementById('bb2');
+							dugme.disabled = false;
 					for (i=0;i<4;i++)
 					{
 						if (uneto[i]==komb[i])
@@ -459,7 +506,9 @@
 					
 					if (flag == true)
 					{				
-
+                            dugme = document.getElementById('bb2');
+							dugme.disabled = true;
+							
 							poeni = 15;	
 
 							for (p=1;p<7;p++)
@@ -528,6 +577,8 @@
 				else
 					if(id=='b2')
 					{
+						dugme = document.getElementById('bb3');
+							dugme.disabled = false;
 						for (i=4;i<8;i++)
 						{
 							if (uneto[i-4]==komb[i-4])
@@ -601,6 +652,8 @@
 
 						if (flag == true)
 						{
+							dugme = document.getElementById('bb3');
+							dugme.disabled = true;
 
 							poeni = 14;
 
@@ -617,7 +670,7 @@
 									{
 												case 0:
 												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
-												alert("Herc");
+												//alert("Herc");
 												break;
 
 												case 1:
@@ -659,6 +712,8 @@
 					else
 						if(id=='b3')
 						{
+							dugme = document.getElementById('bb4');
+							dugme.disabled = false;
 						for (i=8;i<12;i++)
 						{
 							if (uneto[i-8]==komb[i-8])
@@ -732,6 +787,8 @@
 
 						if (flag == true)
 						{
+							dugme = document.getElementById('bb4');
+							dugme.disabled = true;
 
 							poeni = 13;
 
@@ -791,6 +848,8 @@
 					else
 					if(id=='b4')
 						{
+							dugme = document.getElementById('bb5');
+							dugme.disabled = false;
 						for (i=12;i<16;i++)
 						{
 							if (uneto[i-12]==komb[i-12])
@@ -863,6 +922,8 @@ for (i=0;i<4;i++)
 
 if (flag == true)
 {
+	dugme = document.getElementById('bb5');
+							dugme.disabled = true;
 
 	poeni = 12;
 	
@@ -922,6 +983,8 @@ else
 				else
 					if(id=='b5')
 						{
+							dugme = document.getElementById('bb6');
+							dugme.disabled = false;
 						for (i=16;i<20;i++)
 						{
 							if (uneto[i-16]==komb[i-16])
@@ -995,6 +1058,8 @@ else
 
 						if (flag == true)
 						{
+							dugme = document.getElementById('bb6');
+							dugme.disabled = true;
 
 							poeni = 11;
 								for (i=1;i<7;i++)
@@ -1052,6 +1117,7 @@ else
 					}
 					else if(id=='b6')
 						{
+							
 							for (i=20;i<24;i++)
 							{
 								if (uneto[i-20]==komb[i-20])
