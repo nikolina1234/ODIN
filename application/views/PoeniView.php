@@ -30,6 +30,21 @@
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
 
         <!-- Prikazi buttona za slova-->
+        <div class="row">
+            <div class="col-sm-12 mt-sm-3">
+                <center>
+                    <h3><span class="label label-default">
+                            <?php
+                            if(!isset($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                                else if(!isset($_SESSION['username'])) echo $_SESSION['username'];
+                            else
+                                echo 'GOST';
+                            ?>
+                        </span></h3>
+                </center>
+            </div>
+
+        </div>
         <div class="col-6 text-center border border-dark mt-sm-4">
             <center>
                 <div class="row">
@@ -81,8 +96,9 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" aria-label="kompjuter_rec" aria-describedby="basic-addon1" readonly style = "background-color:darkgray;" id = "slagalica" value=<?php
-                            if(!empty($_SESSION['koznazna'])) echo $_SESSION['koznazna'];
+                            if(!empty($_SESSION['ko_zna_zna'])) echo $_SESSION['ko_zna_zna'];
                             else echo 0;
+
                             ?>>
                         </div>
 
@@ -121,7 +137,7 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" aria-label="kompjuter_rec" aria-describedby="basic-addon1" readonly style = "background-color:darkgray;" id = "slagalica" value=<?php
-                            if(!empty($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni'];
+                            if(!empty($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni  '];
                             else echo 0;
                             ?>>
                         </div>

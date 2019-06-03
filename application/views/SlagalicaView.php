@@ -17,7 +17,7 @@
 <?php
     session_start();
     if(isset($_POST['gostime'])) $_SESSION['gostime'] = $_POST['gostime'];
-    if(isset($_POST['hellouser'])) $_SESSION['hellouser'] = $_POST['hellouser'];
+
     $_SESSION['uk_poeni'] = 0;
 
 ?>
@@ -163,36 +163,7 @@
         </div>
 
         <script lang="javascript">
-            /*var lat = [['a','a'],
-                ['б','b'],
-                ['в','v'],
-                ['г','g'],
-                ['д','d'],
-                ['ђ','đ'],
-                ['е','e'],
-                ['ж','ž'],
-                ['з','z'],
-                ['и','i'],
-                ['ј','j'],
-                ['к','k'],
-                ['л','l'],
-                ['љ','lj'],
-                ['м','m'],
-                ['н','n'],
-                ['њ','nj'],
-                ['о','o'],
-                ['п','p'],
-                ['р','r'],
-                ['с','s'],
-                ['т','t'],
-                ['ћ','ć'],
-                ['у','u'],
-                ['ф','f'],
-                ['х','h'],
-                ['ц','c'],
-                ['ч','č'],
-                ['џ','dž'],
-                ['ш','š']];*/
+
 
             var redosled = [];
             var moze = false;
@@ -233,7 +204,16 @@
                     ."'".$this->niz[11]."'";
 
                 ?>
-            ]
+            ];
+
+
+            var   cyr = ['a','б','в','г','д','ђ','е','ж','з','и','ј','к','л','љ','м','н','њ','о','п','р','с','т','ћ','у','ф','х','ц','ч','џ','ш'];
+            var   lat = ['a','b','v','g','d','đ','e','ž','z','i','j','k','l','lj','m','n','nj','o','p','r','s','t','ć','u','f','h','c','č','dž','š'];
+
+
+
+
+
 
             /*zapocinje igru setovanjem tajmera i prikazom generisanih slova*/
             function zapocni_igru() {
@@ -242,6 +222,7 @@
                         igra_pocela = true;
                         for (i = 0; i < 12; i++) {
                             var elem = document.getElementById("id" + i);
+
                             elem.innerHTML = js_niz[i];
                             elem.value = js_niz[i];
                         }
