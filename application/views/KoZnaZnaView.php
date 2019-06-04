@@ -52,14 +52,21 @@
 		<div class="row h-50" style="background-color:#F0F0F0">
 		
 		
-		          <div class="col-2">
-            <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
-				<br>
-				<button class="btn btn-secondary">Start</button>
+		          
+		     <div class="col-2">
+			 <div class="form-group align-items-center">
+                <center>
+                    <label for="name" class="control-label"><?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                                echo 'GOST';
+                    ?></label>
+                </center>
+
+                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
-                  </div>
+        </div>
 		
 		
 		
@@ -69,48 +76,38 @@
 				      <tr class="table-info" height="100px">
 					     <td colspan="4" align="center" ><b>Pitanje:</b>
 						      <br>
-						 	<p>
-						   			<?php
-										if (isset($_SESSION['koznazna']))
-										{
-											echo $_SESSION['koznazna']->pitanje;
-										}
-									?>
+						 	<p id="pitanje">
+						   			
 						   </p>
 						 </td>
 					  </tr>
 					  <tr>
 					
-						 <td align="center" colspan="2">A &nbsp; <input type="button" style="width:50%;"
-						 value=
-						 "<?php
-							 echo $_SESSION['odgovori'][0];
-						 ?>"
+						 <td align="center" colspan="2">A &nbsp; 
 						 
-						  class="btn btn-secondary"></td>
-						 <td align="center" colspan="2">B &nbsp; <input type="button" style="width:50%;"
-						 value=
-						 "<?php
-							echo $_SESSION['odgovori'][1];
-						 ?>"
+						 <input type="button" style="width:50%;"
 						 
-						  class="btn btn-secondary"></td>
+						 
+						  class="btn btn-secondary" id="A">
+						  
+						  </td>
+
+						 <td align="center" colspan="2">B &nbsp; <input id="B" type="button" style="width:50%;"
+						 
+						 
+						  class="btn btn-secondary" ></td>
 						
 					  </tr>
 					  <tr>
 					     
-						  <td align="center" colspan="2">C &nbsp;<input type="button"  style="width:50%;"
-						  value=
-						 "<?php
-							echo $_SESSION['odgovori'][2];
-						 ?>"
+						  <td align="center" colspan="2">C &nbsp;<input id="C" type="button"  style="width:50%;"
+						 
+						
 						  
-						  class="btn btn-secondary"></td>
-						  <td align="center" colspan="2">D &nbsp; <input type="button"  style="width:50%;"
-						  value=
-						 "<?php
-							echo $_SESSION['odgovori'][3];
-						 ?>"
+						  class="btn btn-secondary" ></td>
+						  <td align="center" colspan="2">D &nbsp; <input id="D" type="button"  style="width:50%;"
+						 
+						 
 						  
 						  class="btn btn-secondary"></td>
 						  
@@ -119,12 +116,251 @@
 			</div>
 			<div class="col-2" align="center">
 			    <br>
-			    <button class="btn btn-primary">Ne znam</button>
+			    <button class="btn btn-primary" id="neznam" >Ne znam</button>
 				<br>
 				<br>
 				<form method="post" action="http://localhost/SlagalicaIgniter/SpojniceController/Spojnice">
-			       <input type="submit" class="btn btn-secondary" value="Sledeca igra">
+			       <input type="submit" id="sledeca" disabled='true' class="btn btn-secondary" value="Sledeca igra">
 				</form>
 			</div>
 		</div>
 </div>
+
+<script>
+
+	    var kliknutoDugme;
+		var poeni = 0;
+		var cnt = 1;
+
+		var koznazna0 = "<?php echo $_SESSION['koznazna0']->pitanje; ?>";
+		var tacan0 = "<?php echo $_SESSION['koznazna0']->tacan; ?>";
+
+		var koznazna1 = "<?php echo $_SESSION['koznazna1']->pitanje; ?>";
+		var tacan1 = "<?php echo $_SESSION['koznazna1']->tacan; ?>";			
+
+		var odgovori00 = "<?php echo $_SESSION['odgovori0'][0]; ?>";
+		var odgovori01 = "<?php echo $_SESSION['odgovori0'][1]; ?>";
+		var odgovori02 = "<?php echo $_SESSION['odgovori0'][2]; ?>";
+		var odgovori03 = "<?php echo $_SESSION['odgovori0'][3]; ?>";
+
+		document.getElementById('A').value = odgovori00;
+		document.getElementById('B').value = odgovori01;
+		document.getElementById('C').value = odgovori02;
+		document.getElementById('D').value = odgovori03;
+		document.getElementById('neznam').onclick = function(){proveri(odgovori00,'neznam');};  
+
+						document.getElementById('A').onclick = function(){proveri(odgovori00,'A');}; 
+						document.getElementById('B').onclick = function(){proveri(odgovori01,'B');}; 
+						document.getElementById('C').onclick = function(){proveri(odgovori02,'C');}; 
+						document.getElementById('D').onclick = function(){proveri(odgovori03,'D');}; 
+					
+		document.getElementById('pitanje').innerHTML = koznazna0;
+
+		function proveri(odgovor,id)
+		{
+			 kliknutoDugme = document.getElementById(id);
+			 if (id!='neznam')
+			 {
+				if (odgovor == tacan0)
+				{
+				kliknutoDugme.className = 'btn btn-success';
+				poeni +=5;
+				}
+				else
+				{
+					kliknutoDugme.className = 'btn btn-danger';
+					poeni-=2;
+				}
+			 }
+			 else
+			 	{
+					 poeni = 0;
+
+					 if (document.getElementById('A').value == tacan0)
+					 {
+						document.getElementById('A').className = 'btn btn-warning';
+					 }
+					 else
+						if (document.getElementById('B').value == tacan0)
+						{
+							document.getElementById('B').className = 'btn btn-warning';
+						}
+						else
+							if (document.getElementById('C').value == tacan0)
+							{
+								document.getElementById('C').className = 'btn btn-warning';
+							}
+							else
+								{
+									document.getElementById('D').className = 'btn btn-warning';
+								}
+					
+					
+				 }
+				document.getElementById('A').disabled = true;
+				document.getElementById('B').disabled = true;
+				document.getElementById('C').disabled = true;
+				document.getElementById('D').disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+				xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xhttp.send("igra=koznazna&ukupno="+poeni);
+				xhttp.onload = (e) =>	
+				{
+
+				}
+				setTimeout(callAgain,1000);
+				
+		}
+
+		function callAgain()
+		{
+
+					document.getElementById('A').className = 'btn btn-secondary';
+					document.getElementById('B').className = 'btn btn-secondary';
+					document.getElementById('C').className = 'btn btn-secondary';
+					document.getElementById('D').className = 'btn btn-secondary';
+
+				if (cnt == 1)
+				{
+					var koznazna = "<?php echo $_SESSION['koznazna1']->pitanje; ?>";
+					tacan0 = "<?php echo $_SESSION['koznazna1']->tacan; ?>";
+
+					var odgovori0 = "<?php echo $_SESSION['odgovori1'][0]; ?>";
+					var odgovori1 = "<?php echo $_SESSION['odgovori1'][1]; ?>";
+					var odgovori2 = "<?php echo $_SESSION['odgovori1'][2]; ?>";
+					var odgovori3 = "<?php echo $_SESSION['odgovori1'][3]; ?>";
+
+					document.getElementById('pitanje').innerHTML = koznazna;
+
+					document.getElementById('A').value = odgovori0;
+					document.getElementById('B').value = odgovori1;
+					document.getElementById('C').value = odgovori2;
+					document.getElementById('D').value = odgovori3;
+
+					
+						document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
+						document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
+						document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
+						document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
+
+					document.getElementById('A').disabled = false;
+					document.getElementById('B').disabled = false;
+					document.getElementById('C').disabled = false;
+					document.getElementById('D').disabled = false;
+
+					kliknutoDugme.className = 'btn btn-secondary';
+					cnt++;
+				}
+				else
+					if (cnt == 2)	
+					{
+						var koznazna = "<?php echo $_SESSION['koznazna2']->pitanje; ?>";
+						tacan0 = "<?php echo $_SESSION['koznazna2']->tacan; ?>";
+
+						var odgovori0 = "<?php echo $_SESSION['odgovori2'][0]; ?>";
+						var odgovori1 = "<?php echo $_SESSION['odgovori2'][1]; ?>";
+						var odgovori2 = "<?php echo $_SESSION['odgovori2'][2]; ?>";
+						var odgovori3 = "<?php echo $_SESSION['odgovori2'][3]; ?>";
+
+						document.getElementById('pitanje').innerHTML = koznazna;
+
+						document.getElementById('A').value = odgovori0;
+						document.getElementById('B').value = odgovori1;
+						document.getElementById('C').value = odgovori2;
+						document.getElementById('D').value = odgovori3;
+
+						document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
+						document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
+						document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
+						document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
+
+
+						
+						document.getElementById('A').disabled = false;
+						document.getElementById('B').disabled = false;
+						document.getElementById('C').disabled = false;
+						document.getElementById('D').disabled = false;
+
+						kliknutoDugme.className = 'btn btn-secondary';
+						cnt++;
+					}
+					else
+						if (cnt == 3)	
+						{
+							var koznazna = "<?php echo $_SESSION['koznazna3']->pitanje; ?>";
+							tacan0 = "<?php echo $_SESSION['koznazna3']->tacan; ?>";
+
+							var odgovori0 = "<?php echo $_SESSION['odgovori3'][0]; ?>";
+							var odgovori1 = "<?php echo $_SESSION['odgovori3'][1]; ?>";
+							var odgovori2 = "<?php echo $_SESSION['odgovori3'][2]; ?>";
+							var odgovori3 = "<?php echo $_SESSION['odgovori3'][3]; ?>";
+
+							document.getElementById('pitanje').innerHTML = koznazna;
+
+							document.getElementById('A').value = odgovori0;
+							document.getElementById('B').value = odgovori1;
+							document.getElementById('C').value = odgovori2;
+							document.getElementById('D').value = odgovori3;
+
+							document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
+							document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
+							document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
+							document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
+							
+							document.getElementById('A').disabled = false;
+							document.getElementById('B').disabled = false;
+							document.getElementById('C').disabled = false;
+							document.getElementById('D').disabled = false;
+
+							kliknutoDugme.className = 'btn btn-secondary';
+							cnt++;
+						}
+						else
+						if (cnt == 4)	
+						{
+							var koznazna = "<?php echo $_SESSION['koznazna4']->pitanje; ?>";
+							tacan0 = "<?php echo $_SESSION['koznazna4']->tacan; ?>";
+
+							var odgovori0 = "<?php echo $_SESSION['odgovori4'][0]; ?>";
+							var odgovori1 = "<?php echo $_SESSION['odgovori4'][1]; ?>";
+							var odgovori2 = "<?php echo $_SESSION['odgovori4'][2]; ?>";
+							var odgovori3 = "<?php echo $_SESSION['odgovori4'][3]; ?>";
+
+							document.getElementById('pitanje').innerHTML = koznazna;
+
+							document.getElementById('A').value = odgovori0;
+							document.getElementById('B').value = odgovori1;
+							document.getElementById('C').value = odgovori2;
+							document.getElementById('D').value = odgovori3;
+
+							document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
+							document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
+							document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
+							document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
+							
+							document.getElementById('A').disabled = false;
+							document.getElementById('B').disabled = false;
+							document.getElementById('C').disabled = false;
+							document.getElementById('D').disabled = false;
+
+							kliknutoDugme.className = 'btn btn-secondary';
+							cnt++;
+								
+							}
+							else
+								{
+									document.getElementById('A').disabled = true;
+									document.getElementById('B').disabled = true;
+									document.getElementById('C').disabled = true;
+									document.getElementById('D').disabled = true;
+
+									document.getElementById('neznam').disabled = true;
+									document.getElementById('sledeca').disabled = false;
+								}
+					
+		}
+			
+</script>
