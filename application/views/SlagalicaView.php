@@ -17,10 +17,11 @@
 <?php
     session_start();
     if(isset($_POST['gostime'])) $_SESSION['gostime'] = $_POST['gostime'];
-
     $_SESSION['uk_poeni'] = 0;
 
 ?>
+
+
 
 <div class="container">
 
@@ -69,7 +70,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input class = "text-center rounded"  value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
         <!-- Prikazi buttona za slova-->
@@ -122,11 +123,11 @@
                 <div class="row">
                     <div class="col-sm-10">
 
-                        <div class="input-group mb-3" style = "width:85%; margin-left: 110px;">
+                        <div class="input-group mb-3" style="width:80%;margin-left: 110px;">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1" style="color: #333333;"> &nbsp; Vaša reč  &nbsp;</span>
+                                <span class="input-group-text text-center" id="basic-addon1" style="color: #333333; display: inline-block;width: 100px;">Vaša reč</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="rec_igraca" id = "rec_igraca" aria-describedby="basic-addon1" readonly style="background-color: white">
+                            <input type="text" class="form-control text-center" aria-label="rec_igraca" id = "rec_igraca" aria-describedby="basic-addon1" readonly style="background-color: white">
                         </div>
 
                     </div>
@@ -139,12 +140,19 @@
             </center>
 
             <center>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="input-group mb-3" style="width: 80%;margin-left: 110px">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-center" id="basic-addon1" style="color: #333333;display: inline-block; width: 100px;">Kompjuter</span>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="kompjuter_rec" aria-describedby="basic-addon1" readonly style = "background-color:darkgray; " id = "kompjuter_rec">
 
-                <div class="input-group mb-3" style = "width:70%;">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1" style="color: #333333">Kompjuter</span>
+                        </div>
+
                     </div>
-                    <input type="text" class="form-control" aria-label="kompjuter_rec" aria-describedby="basic-addon1" readonly style = "background-color:darkgray;" id = "kompjuter_rec">
+
+                    <div class="col-sm-2"></div>
                 </div>
 
             </center>
@@ -169,6 +177,7 @@
             var moze = false;
             var br_sl = 0;
             var slova = [];
+            var slova_lat = [];
             var igra_pocela = false;
             var igra_kraj = false;
             var najduza =<?php
@@ -206,11 +215,7 @@
                 ?>
             ];
 
-
-            var   cyr = ['a','б','в','г','д','ђ','е','ж','з','и','ј','к','л','љ','м','н','њ','о','п','р','с','т','ћ','у','ф','х','ц','ч','џ','ш'];
-            var   lat = ['a','b','v','g','d','đ','e','ž','z','i','j','k','l','lj','m','n','nj','o','p','r','s','t','ć','u','f','h','c','č','dž','š'];
-
-
+            var lat = {а:'a', б:'b', в:'v',г:'g',д:'d',ђ:'đ',е:'e',ж:'ž',з:'z',и:'i',ј:'j',к:'k',л:'l',љ:'lj',м:'m',н:'n',њ:'nj',о:'o',п:'p',р:'r',с:'s',т:'t',ћ:'ć',у:'u',ф:'f',х:'h',ц:'c',ч:'č',џ:'dž',ш:'š'}
 
 
 
@@ -222,8 +227,7 @@
                         igra_pocela = true;
                         for (i = 0; i < 12; i++) {
                             var elem = document.getElementById("id" + i);
-
-                            elem.innerHTML = js_niz[i];
+                            elem.innerHTML = lat[js_niz[i]];
                             elem.value = js_niz[i];
                         }
                     }
@@ -283,8 +287,9 @@
                             $("#id11").prop('disabled', true);
                         }
                     slova.push(document.getElementById(redosled[br_sl]).value);
+                    slova_lat.push(lat[document.getElementById(redosled[br_sl]).value]);
                     br_sl++;
-                    slova_kon = slova.join("");
+                    slova_kon = slova_lat.join("");
                     $('#rec_igraca').attr('placeholder', slova_kon);
                     proveri();
                 }
@@ -295,8 +300,9 @@
                 if(igra_pocela && !igra_kraj && br_sl != 0) {
                     id = redosled.pop();
                     slova.pop();
+                    slova_lat.pop();
                     br_sl--;
-                    slova_kon = slova.join("");
+                    slova_kon = slova_lat.join("");
 
                     $("#" + id).prop('disabled', false);
                     $('#rec_igraca').attr('placeholder', slova_kon);
@@ -308,7 +314,17 @@
             function kraj_igre() {
                 if(igra_pocela){
                     igra_kraj = true;
-                    $('#kompjuter_rec').attr('placeholder', najduza);
+                    var resenje = [];
+                    var razdvoj = najduza.split('');
+                    for(i=0;i<najduza.length;i++){
+                        resenje[i] = lat[razdvoj[i]];
+                    }
+                    resenje = resenje.join("");
+
+
+                        $('#kompjuter_rec').attr('placeholder', resenje);
+
+
                     tajmer.stop();
 
                     $("#kraj").show();

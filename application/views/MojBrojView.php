@@ -63,9 +63,9 @@
                             echo 'GOST';
                         ?></label>
                 </center>
+                <input class = "text-center rounded"  value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
 
-                <input align="center" type="text" value = <?php echo $_SESSION['uk_poeni']?> class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
-            </div>
+          </div>
         </div>
         <!-- Prikazi buttona za slova-->
         <div class="col-8 text-center border border-dark mt-sm-4">
@@ -182,7 +182,7 @@
                             </label>
 
 
-                    <input align="center" type="text" id = "dobio_je" class="form-control" id="broj_poena" readonly style = "background-color: #0B0B3B; width: 70px; height:70px; margin-left: 32px;color: white; font-size: 25px; display: none;">
+                    <input class="text-center rounded" type="text" id = "dobio_je" class="form-control" id="broj_poena" readonly style = "background-color: #0B0B3B; width: 70px; height:70px; margin-left: 32px;color: white; font-size: 25px; display: none;">
                     </center>
                 </div>
                 <form action="http://localhost/SlagalicaIgniter/SkockoController/Skocko">
