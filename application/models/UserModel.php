@@ -115,7 +115,7 @@
                 $zeli_mod = 1;
             }
             $query = $this->db->query
-            ("INSERT INTO Korisnik(korisnicko_ime,lozinka,e_mail,zeli_mod,je_moderator,je_admin,pol,br_poena,rang) VALUES ('$username','$password','$email',$zeli_mod,0,0,$pol,0,0);");
+            ("INSERT INTO Korisnik(korisnicko_ime,lozinka,e_mail,zeli_mod,je_moderator,je_admin,pol,br_poena) VALUES ('$username','$password','$email',$zeli_mod,0,0,$pol,0);");
         
             return 0;
         }
