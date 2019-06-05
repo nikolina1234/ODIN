@@ -64,7 +64,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input align="center" value = "<?php if (isset($_SESSION['broj_poena'])) echo $_SESSION['uk_poeni']; else echo 0; ?>"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		
@@ -211,8 +211,20 @@
 				// {
 
 				// }
+				var xhttp = new XMLHttpRequest();
 
-				document.getElementById('broj_poena').value = parseInt(document.getElementById('broj_poena').value) + poeni;
+				xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+				xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xhttp.send("igra=koznazna&ukupno="+poeni);
+				xhttp.onload = (e) =>	
+				{
+
+				}
+
+				var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+				document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+			
 				setTimeout(callAgain,1000);
 				
 		}
