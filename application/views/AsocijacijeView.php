@@ -37,6 +37,10 @@ $akonacno = $_SESSION['a_konacno'];
 $bkonacno = $_SESSION['b_konacno'];
 $ckonacno = $_SESSION['c_konacno'];
 $dkonacno = $_SESSION['d_konacno'];
+
+    //session_start();
+    $_SESSION['uk_poeni'] = $_SESSION['Spojnice'];
+
 ?>
 
 <div class="container">
@@ -74,13 +78,27 @@ $dkonacno = $_SESSION['d_konacno'];
         </div>
     <!-- Izgled igrice  -->
     <div class="row h-90" style="background-color:#F0F0F0">
+	
+	
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
         <div class="col-2">
-            <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+			 <div class="form-group align-items-center">
+                <center>
+                    <label for="name" class="control-label"><?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                                echo 'GOST';
+                    ?></label>
+                </center>
+
+                <input class = "text-center rounded" value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
+		
+		
+		
+		
         <!-- Prikazi buttona za slova-->
         <div class="col-10 text-center border border-dark mt-sm-4">
 		   <div class="row">
@@ -181,6 +199,7 @@ $dkonacno = $_SESSION['d_konacno'];
 		var flagB = 0;
 		var flagC = 0;
 		var flagD = 0;
+		var poeni = 0;
 		
 		document.getElementById('A1').addEventListener("click", function(){promeni('A1');});
 		
@@ -230,8 +249,8 @@ $dkonacno = $_SESSION['d_konacno'];
 
 		switch(id){
 			case 'A1':
-			flag = 1;
-			flagA = 1;
+			
+			flagA++;
 			var dugme = document.getElementById("dugmeA");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -242,8 +261,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'A2':
-			flag = 1;
-			flagA = 1;
+			
+			flagA++;
 			var dugme = document.getElementById("dugmeA");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -254,8 +273,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 			
 			case 'A3':
-			flag = 1;
-			flagA = 1;
+			
+			flagA++;
 			var dugme = document.getElementById("dugmeA");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -266,8 +285,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'A4':
-			flag = 1;
-			flagA = 1;
+			
+			flagA++;
 			var dugme = document.getElementById("dugmeA");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -278,8 +297,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'B1':
-			flag = 1;
-			flagB = 1;
+			
+			flagB++;
 			var dugme = document.getElementById("dugmeB");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -290,8 +309,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'B2':
-			flag = 1;
-			flagB = 1;
+			
+			flagB++;
 			var dugme = document.getElementById("dugmeB");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -302,8 +321,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'B3':
-			flag = 1;
-			flagB = 1;
+			
+			flagB++;
 			var dugme = document.getElementById("dugmeB");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -314,8 +333,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'B4':
-			flag = 1;
-			flagB = 1;
+			
+			flagB++;
 			var dugme = document.getElementById("dugmeB");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -326,8 +345,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'C1':
-			flag = 1;
-			flagC = 1;
+			
+			flagC++;
 			var dugme = document.getElementById("dugmeC");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -338,8 +357,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'C2':
-			flag = 1;
-			flagC = 1;
+			
+			flagC++;
 			var dugme = document.getElementById("dugmeC");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -350,8 +369,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'C3':
-			flag = 1;
-			flagC = 1;
+			
+			flagC++;
 			var dugme = document.getElementById("dugmeC");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -362,8 +381,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'C4':
-			flag = 1;
-			flagC = 1;
+			
+			flagC++;
 			var dugme = document.getElementById("dugmeC");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -374,8 +393,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'D1':
-			flag = 1;
-			flagD = 1;
+			
+			flagD++;
 			var dugme = document.getElementById("dugmeD");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -386,8 +405,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'D2':
-			flag = 1;
-			flagD = 1;
+			
+			flagD++;
 			var dugme = document.getElementById("dugmeD");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -398,8 +417,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'D3':
-			flag = 1;
-			flagD = 1;
+			
+			flagD++;
 			var dugme = document.getElementById("dugmeD");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -410,8 +429,8 @@ $dkonacno = $_SESSION['d_konacno'];
 			break;
 
 			case 'D4':
-			flag = 1;
-			flagD = 1;
+			
+			flagD++;
 			var dugme = document.getElementById("dugmeD");
 				dugme.disabled = false;
 				 dugme = document.getElementById("dugmeKon");
@@ -428,7 +447,7 @@ $dkonacno = $_SESSION['d_konacno'];
 	
 	function proveriA()
 		{
-			if(flagA == 1){
+			
 				var dugme111 = document.getElementById("dugmeA");
 				dugme111.disabled = false;
 			var inputBox = document.getElementById('A');
@@ -438,6 +457,8 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['a_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				poeni = 3 + 4 - flagA;
+				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 
@@ -460,22 +481,31 @@ $dkonacno = $_SESSION['d_konacno'];
 				}
 				var dugme = document.getElementById("dugmeA");
 				dugme.disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=asocijacije&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
+					flagA = 4;
 			}
 			else 
 			{
 				inputBox.value="";
 			}
-			}
-			else
-			{
-				var dugme = document.getElementById("dugmeA");
-				dugme.disabled = true;
-			}
+			
 
 		}
 		function proveriB()
 		{
-			if(flagB==1){
+			
 				var dugme111 = document.getElementById("dugmeB");
 				dugme111.disabled = false;
 			var inputBox = document.getElementById('B');
@@ -485,6 +515,8 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['b_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				poeni = 3 + 4 - flagB;
+				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 
@@ -507,24 +539,33 @@ $dkonacno = $_SESSION['d_konacno'];
 				}
 				var dugme = document.getElementById("dugmeB");
 				dugme.disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=asocijacije&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
+					flagB = 4;
 			}
 			else
 			{
 				inputBox.value="";
 			}
-			}
-			else
-			{
-				var dugme = document.getElementById("dugmeB");
-				dugme.disabled = true;
-			}
+			
 
 		}
 
 
 		function proveriC()
 		{
-			if(flagC==1){
+			
 				var dugme111 = document.getElementById("dugmeC");
 				dugme111.disabled = false;
 			var inputBox = document.getElementById('C');
@@ -534,6 +575,8 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['c_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				poeni = 3 + 4 - flagC;
+				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 
@@ -556,24 +599,33 @@ $dkonacno = $_SESSION['d_konacno'];
 				}
 				var dugme = document.getElementById("dugmeC");
 				dugme.disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=asocijacije&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
+					flagC = 4;
 			}
 			else 
 			{
 				inputBox.value="";
 			}
-			}
-			else
-			{
-				var dugme = document.getElementById("dugmeC");
-				dugme.disabled = true;
-			}
+			
 
 		}
 
 
 		function proveriD()
 		{
-			if(flagD==1){
+			
 				
 			var dugme111 = document.getElementById("dugmeD");
 				dugme111.disabled = false;
@@ -584,6 +636,8 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['d_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				poeni = 3 + 4 - flagD;
+				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
 
@@ -606,23 +660,32 @@ $dkonacno = $_SESSION['d_konacno'];
 				}
 				var dugme = document.getElementById("dugmeD");
 				dugme.disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=asocijacije&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
+					flagD = 4;
 			}
 			else
 			{
 				inputBox.value="";
 			}
-			}
-			else
-			{
-				var dugme = document.getElementById("dugmeD");
-				dugme.disabled = true;
-			}
+			
 
 		}
 
 		function proveriKonacno()
 		{
-			if(flag==1){
+			
 				var dugme111 = document.getElementById("dugmeKon");
 				dugme111.disabled = false;
 			var inputBox = document.getElementById('Konacno');
@@ -632,6 +695,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				poeni = 8 + 16 - flagA - flagB - flagC - flagD + 12 - flag;
 				inputBox.value = str;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -737,17 +801,25 @@ $dkonacno = $_SESSION['d_konacno'];
 				dugme.disabled = true;
 				dugme = document.getElementById("dugmeKon");
 				dugme.disabled = true;
+				
+				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=asocijacije&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
 			}
 			else{
 				inputBox.value="";
 			}
-		}
-		else
-		{
-			var dugme = document.getElementById("dugmeKon");
-				dugme.disabled = true;
-		}
+		
 
 		}
-//window.addEventListener('load', );
+
 </script>
