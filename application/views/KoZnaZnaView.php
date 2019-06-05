@@ -164,12 +164,12 @@
 				if (odgovor == tacan0)
 				{
 				kliknutoDugme.className = 'btn btn-success';
-				poeni +=5;
+				poeni = 5;
 				}
 				else
 				{
 					kliknutoDugme.className = 'btn btn-danger';
-					poeni-=2;
+					poeni = -2;
 				}
 			 }
 			 else
@@ -202,15 +202,17 @@
 				document.getElementById('C').disabled = true;
 				document.getElementById('D').disabled = true;
 				
-				var xhttp = new XMLHttpRequest();
+				
 
-				xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-				xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-				xhttp.send("igra=koznazna&ukupno="+poeni);
-				xhttp.onload = (e) =>	
-				{
+				// xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+				// xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				// xhttp.send("igra=koznazna&ukupno="+poeni);
+				// xhttp.onload = (e) =>	
+				// {
 
-				}
+				// }
+
+				document.getElementById('broj_poena').value = parseInt(document.getElementById('broj_poena').value) + poeni;
 				setTimeout(callAgain,1000);
 				
 		}
@@ -241,10 +243,10 @@
 					document.getElementById('D').value = odgovori3;
 
 					
-						document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
-						document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
-						document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
-						document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
+					document.getElementById('A').onclick = function(){proveri(odgovori0,'A');}; 
+					document.getElementById('B').onclick = function(){proveri(odgovori1,'B');}; 
+					document.getElementById('C').onclick = function(){proveri(odgovori2,'C');}; 
+					document.getElementById('D').onclick = function(){proveri(odgovori3,'D');}; 
 
 					document.getElementById('A').disabled = false;
 					document.getElementById('B').disabled = false;
@@ -352,6 +354,14 @@
 							}
 							else
 								{
+									var xhttp = new XMLHttpRequest();
+									xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+									xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+									xhttp.send("igra=koznazna&ukupno="+parseInt(document.getElementById('broj_poena').value));
+									xhttp.onload = (e) =>	
+									{
+
+									}
 									document.getElementById('A').disabled = true;
 									document.getElementById('B').disabled = true;
 									document.getElementById('C').disabled = true;
@@ -359,6 +369,8 @@
 
 									document.getElementById('neznam').disabled = true;
 									document.getElementById('sledeca').disabled = false;
+
+
 								}
 					
 		}
