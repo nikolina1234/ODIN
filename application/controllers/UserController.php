@@ -65,8 +65,9 @@
                         {
                             //$gameplayNameSet = $this->UserModel->getGameplayName($user);
 
-                                session_start();
-                                $_SESSION['username'] = $user;               
+
+                                $_SESSION['username'] = $user;
+                                $_SESSION['pass'] = $pass;
                                 $this->view('ObicanKorisnikHomePage');
                               
                         }
@@ -244,11 +245,23 @@
 
             $korisnici = $this->UserModel->getKorisnici();
 
-           session_start();
+
 
            $_SESSION['korisnici'] = $korisnici;
 
            $this->view('ObicanKorisnikRangLista');
+        }
+
+        /**
+         * Poziva model koji dodaje osvojene poene starim poenima registrovanog korisnika
+         * @return void
+         * @author Nikolina Stojić 0639/2016
+         */
+        public function updatePoints(){
+            $this->load->model("UserModel");
+            $this->UserModel->updatePoints();
+            $this->load->view('inc/header');
+            $this->load->view('ObicanKorisnikHomePage');
         }
     }
 

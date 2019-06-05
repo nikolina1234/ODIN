@@ -1,5 +1,5 @@
 <?php
-
+session_start();
     class UserModel extends CI_Model
     {
         public function __construct()
@@ -178,6 +178,31 @@
             }
 
             return $korisnici;
+        }
+        /**
+         *Brise sesiju registrovanog igraca i apdejtuje njegove poene tako sto na stare doda novoosvojene
+         *@return void
+         *@author Nikolina Stojić 0639/2016
+         */
+        public function updatePoints(){
+            if(!empty($_SESSION['username'])){
+                $kor = $_SESSION['username'];
+                unset($_SESSION['username']);
+            }
+            if(!empty($_SESSION['uk_poeni']))$points = $_SESSION['uk_poeni'];
+            else $points = 0;
+
+            if (!empty($_SESSION['uk_poeni']))unset($_SESSION['uk_poeni']);
+            unset($_SESSION['slagalica']);
+            unset($_SESSION['moj_broj']);
+            unset($_SESSION['skocko']);
+            unset($_SESSION['ko_zna_zna']);
+            unset($_SESSION['spojnice']);
+            unset($_SESSION['asocijacije']);
+
+            $sql = "UPDATE Korisnik SET br_poena=br_poena+'$points' WHERE korisnicko_ime='$kor'";
+            $this->db->query($sql);
+
         }
     }
 

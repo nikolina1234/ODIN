@@ -1,4 +1,8 @@
 
+<!--
+    @author Nikolina Stojić 0639/2016
+-->
+
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
@@ -56,10 +60,12 @@
                 <div id = "tajmer_bar"></div>
             </div>
         </div>
+
     <!-- Izgled igrice  -->
     <div class="row " style="background-color:#F0F0F0">
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
         <div class="col-2">
+            <!-- prikaz igraca i njegovih poena -->
             <div class="form-group align-items-center">
                 <center>
                     <label for="name" class="control-label"><?php
@@ -110,10 +116,13 @@
 
             <center>
                 <div class = "row">
+
+                    <!-- dugme za pocetak igre -->
                     <div class = "col-sm-6">
                         <button type="button" class="btn btn-dark btn-lg" value="start" onclick="zapocni_igru()">Započni igru</button>
                     </div>
 
+                    <!-- dugme za kraj igre-->
                     <div class = "col-sm-6">
                         <button type="button" id = "konacno" class="btn btn-dark btn-lg" onclick="kraj_igre()">Konačna reč</button>
                     </div>
@@ -123,6 +132,7 @@
                 <div class="row">
                     <div class="col-sm-10">
 
+                        <!-- prikaz korisnikove reci-->
                         <div class="input-group mb-3" style="width:80%;margin-left: 110px;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-center" id="basic-addon1" style="color: #333333; display: inline-block;width: 100px;">Vaša reč</span>
@@ -131,6 +141,8 @@
                         </div>
 
                     </div>
+
+                    <!-- dugme za brisanje poslednjeg slova -->
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-dark btn-small" value="start" onclick="brisi()">Obriši</button>
                     </div>
@@ -142,12 +154,13 @@
             <center>
                 <div class="row">
                     <div class="col-sm-10">
+
+                        <!-- deo za prikaz korisnikove reci -->
                         <div class="input-group mb-3" style="width: 80%;margin-left: 110px">
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-center" id="basic-addon1" style="color: #333333;display: inline-block; width: 100px;">Kompjuter</span>
                             </div>
                             <input type="text" class="form-control text-center" aria-label="kompjuter_rec" aria-describedby="basic-addon1" readonly style = "background-color:darkgray; " id = "kompjuter_rec">
-
                         </div>
 
                     </div>
@@ -163,6 +176,7 @@
 
         <div class="col-sm-2 mt-sm-6">
             <center>
+                <!-- dugme za prelazak na moj broj -->
                 <form action="http://localhost/SlagalicaIgniter/MojBrojController">
                     <button id = "kraj" type="submit" class="btn btn-danger btn-lg" style="margin-top: 375px; display: none;">Moj Broj</button>
                 </form>
@@ -173,17 +187,19 @@
         <script lang="javascript">
 
 
-            var redosled = [];
-            var moze = false;
-            var br_sl = 0;
-            var slova = [];
-            var slova_lat = [];
+            var redosled = []; /*redosled slova*/
+            var moze = false; /*da li rec postoji ili ne postoji u bazi, potrebno za racunanje poena*/
+            var br_sl = 0; /*SP*/
+            var slova = []; /*slova ko stek*/
+            var slova_lat = []; /*za latinicni prikaz*/
             var igra_pocela = false;
             var igra_kraj = false;
             var najduza =<?php
                echo "\"".$this->najduza_rec."\"";
-            ?>
-   /*podesavanja izgleda i funkcionisanja tajmera*/
+            ?>  /*najduza rec koju je racunar nasao u bazi*/
+
+
+            /*podesavanja izgleda i funkcionisanja tajmera*/
             var tajmer = $('#tajmer_bar').progressBarTimer({
                 timeLimit: 60,
                 warningThreshold: 20,
@@ -196,7 +212,7 @@
                    kraj_igre();
                 }
                 });
-
+            /*prebacivanje generisanih slova u js promenljivu radi lakseg baratanja s njom*/
             var js_niz = [
                 <?php
                 echo "'".$this->niz[0]."'".","
@@ -220,7 +236,9 @@
 
 
 
-            /*zapocinje igru setovanjem tajmera i prikazom generisanih slova*/
+            /**
+             * Zapocinje igru setovanjem tajmera i prikazom generisanih slova
+             * @return void*/
             function zapocni_igru() {
                     if(!igra_kraj && !igra_pocela) {
                         tajmer.start();
@@ -234,8 +252,11 @@
 
 
             }
-            /*Klikom na bilo koje od 12 dugmadi dodaje se slovo datoj reci
-            * i vrsi se provera da li takva rec postoji u bazi*/
+            /**
+             * Klikom na bilo koje od 12 dugmadi dodaje se slovo datoj reci
+            * i vrsi se provera da li takva rec postoji u bazi
+             *
+             * @return void*/
             function dugme_klik(ime) {
                 if (igra_pocela && !igra_kraj) {
                         if (ime === "btn0"){
@@ -294,8 +315,11 @@
                     proveri();
                 }
             }
-            /*Pritiskom na dugme obrisi skida poslednje slovo i proverava da li takva rec
-            * postoji u bazi*/
+
+            /**
+             * Pritiskom na dugme obrisi skida poslednje slovo i proverava da li takva rec
+            * postoji u bazi
+             * @return void*/
             function brisi() {
                 if(igra_pocela && !igra_kraj && br_sl != 0) {
                     id = redosled.pop();
@@ -309,8 +333,11 @@
                     proveri();
                 }
             }
-            /*Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
-            * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova*/
+
+            /**
+             * Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
+            * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova i poziva funkciju koja racuna poene
+             * @return void*/
             function kraj_igre() {
                 if(igra_pocela){
                     igra_kraj = true;
@@ -320,20 +347,16 @@
                         resenje[i] = lat[razdvoj[i]];
                     }
                     resenje = resenje.join("");
-
-
                         $('#kompjuter_rec').attr('placeholder', resenje);
-
-
                     tajmer.stop();
-
                     $("#kraj").show();
                     poeni();
-
-
                 }
             }
-            /*Proverava da li trenutna rec postoji u bazi i boji polje u zavisnosti od toga*/
+
+            /**
+             * Proverava da li trenutna rec postoji u bazi i boji polje u zavisnosti od toga
+             * @return void*/
             function proveri() {
                 var xhttp = new XMLHttpRequest();
                 var rec = "";
@@ -359,18 +382,20 @@
                 }
 
             }
-            /*Racuna broj poena na serveru na osnovu reci.Poziva se iskljucivo iz funkcije kraj_igre()*/
+
+            /**
+             * Racuna broj poena i salje ih serveru
+             * Poziva se iskljucivo iz funkcije kraj_igre()
+             * */
             function poeni() {
                 proveri();
                 points = 0;
                 if(moze){
-
                     points = slova_kon.length*2;
                     if(najduza==slova_kon) points = points+5;
-
                 }
-                var xhttp = new XMLHttpRequest();
 
+                var xhttp = new XMLHttpRequest();
                 xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
                 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhttp.send("igra=slagalica&ukupno="+points);

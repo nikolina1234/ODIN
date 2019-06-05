@@ -1,4 +1,8 @@
 
+<!--
+    @author Nikolina Stojić 0639/2016
+-->
+
 <?php
     session_start();
     $_SESSION['uk_poeni'] = $_SESSION['slagalica'];
@@ -39,9 +43,8 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
     <!-- Progres bar za prikaz preostalog vremena-->
     <div class="row h-35" style="background-color:#F0F0F0">
         <div class = "col-2"></div>
@@ -49,10 +52,11 @@
             <div id = "tajmer_bar"></div>
         </div>
     </div>
+
     <!-- Izgled igrice  -->
     <div class="row " style="background-color:#F0F0F0">
-        <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
 
+        <!-- Prikaz imena igraca i njegovih osvojenih poena-->
         <div class="col-2">
             <div class="form-group align-items-center">
                 <center>
@@ -67,7 +71,10 @@
 
           </div>
         </div>
-        <!-- Prikazi buttona za slova-->
+
+        <!-- Prikazi buttona za brojeve i operacije
+            na klik se zove funkcija koja prikazuje taj broj/operaciju u onom delu koje sluzi za prikaz korisnikovog unosa
+        -->
         <div class="col-8 text-center border border-dark mt-sm-4">
             <center>
                 <div class="row">
@@ -133,10 +140,11 @@
 
             <center>
                 <div class = "row">
+                    <!-- dugme za pocetak igre, funkcija radi pokrece igru -->
                     <div class = "col-sm-6">
                         <button type="button" class="btn btn-dark btn-lg" value="start" onclick="zapocni_igru()">Započni</button>
                     </div>
-
+                    <!-- dugme za kraj igre, funkcija zavrsava igru-->
                     <div class = "col-sm-6">
                         <button type="button" id = "konacno" class="btn btn-dark btn-lg" onclick="kraj_igre()">Konačno</button>
                     </div>
@@ -145,7 +153,7 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-10">
-
+                        <!-- prikaz korisnikog unosa -->
                         <div class="input-group mb-3" style = "width:85%; margin-left: 110px;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1" style="color: #333333;"> &nbsp; Kombinacija  &nbsp;</span>
@@ -154,6 +162,7 @@
                         </div>
 
                     </div>
+                    <!-- dugme za brisanje poslednjeg unosa -->
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-dark btn-small" value="start" onclick="brisi()">Obriši</button>
                     </div>
@@ -172,9 +181,11 @@
         </div>
         <div class="col-2">
 
-        <!-- ISPRAVITI ACTION -->
         <div class="col-sm-4 mt-sm-6">
             <center>
+                <!-- prikazuje koji broj je korisnik izracunao
+                    vidljivo tek posle kraja igre
+                -->
                 <div class="form-group align-items-center" style="margin-top: 250px;">
                     <center>
                         <label for="name" class="control-label" id="teksts" style="margin-left: 43px; display: none;">
@@ -195,14 +206,14 @@
 
 
         <script language="javascript">
-            var redosled = [];
-            var br_sl = 0;
+            var redosled = []; /*kojim redosledom je pritiskao*/
+            var br_sl = 0; /*SP*/
             var points_kon = 0;
-            var slova = [];
+            var slova = []; /*stek za korisnikove akcije*/
             var igra_pocela = false;
             var igra_kraj = false;
             var trazi_se = 0; /*koji broj se trazi*/
-            var uzeo = [false, false, false, false, false, false];
+            var uzeo = [false, false, false, false, false, false]; /*da li je vec iskoristio taj broj/operaciju*/
 
 
             /*podesavanja izgleda i funkcionisanja tajmera*/
@@ -219,11 +230,21 @@
                 }
             });
 
-
+            /**
+             * Proverava da li je korisnik pritisnuo operaciju
+             * @param string izraz - vrednost poslednjeg pritisnutog
+             * @return boolean
+             *
+             * **/
             function is_operacija(izraz) {
                 return izraz == '+' || izraz == '-' || izraz == '*' || izraz == '/';
             }
 
+            /**
+             * Proverava koji je sledeci validan izraz
+             * @param string izraz - vrednost poslednjeg pritisnutog
+             * @return array
+             * **/
             function next_valid(izraz) {
                 if (izraz == "") return {broj: true, otvorena: true, zatvorena: false, operacija: false};
                 var n = izraz.length;
@@ -236,7 +257,10 @@
             }
 
 
-            /*zapocinje igru setovanjem tajmera i prikazom generisanih brojeva*/
+            /**
+             * Zapocinje igru setovanjem tajmera i prikazom generisanih brojeva
+             * @return void
+             * */
             function zapocni_igru() {
 
                     if(!igra_pocela && !igra_kraj) {
@@ -268,9 +292,11 @@
 
 
             }
-            /*Klikom na bilo koje od 12 dugmadi dodaje se slovo datoj reci
-            * i vrsi se provera da li takva rec postoji u bazi*/
 
+            /**
+             * Gleda sta moze sledece da se doda i disejbluje sta ne moze
+             * @return void
+             * */
             function validiraj() {
                 slova_kon = slova.join("");
                 var x = next_valid(slova_kon);
@@ -281,106 +307,76 @@
                 for (i = 6; i < 10; i++) $('#id' + i).prop('disabled', !x.operacija);
             }
 
+            /**
+             * Klikom na dugme dodaje u niz kliknutih i to prikazuje korisniku u predvidjenom prostoru i
+             * validira sledeceg pozivom validiraj()
+             * @return void
+             * */
             function dugme_klik(ime) {
                 if (igra_pocela && !igra_kraj) {
-                    var tacno = true;
                     if (ime === "btn0"){
-
-                        if (tacno) {
                             redosled.push("id0");
                             $("#id0").prop('disabled', true);
                             uzeo[0] = true;
-                        }
                     }
                     if (ime === "btn1") {
-
-                        if(tacno) {
                             redosled.push("id1");
                             $("#id1").prop('disabled', true);
                             uzeo[1] = true;
-                        }
                     }
                     if (ime === "btn2") {
-
-                        if(tacno){
                             redosled.push("id2");
                             $("#id2").prop('disabled', true);
                             uzeo[2] = true;
-
-                        }
                     }
                     if (ime === "btn3") {
-
-                        if(tacno) {
                             redosled.push("id3");
                             $("#id3").prop('disabled', true);
                             uzeo[3] = true;
-
-                        }
                     }
                     if (ime === "btn4") {
-
-                        if(tacno) {
                             redosled.push("id4");
                             $("#id4").prop('disabled', true);
                             uzeo[4] = true;
-                        }
                     }
                     if (ime === "btn5") {
-
-                        if(tacno) {
                             redosled.push("id5");
                             $("#id5").prop('disabled', true);
                             uzeo[5] = true;
-                        }
                     }
                     if (ime === "btn6") {
-
-                        if (tacno)
                             redosled.push("id6");
-
                     }
                     if (ime === "btn7") {
-
-                        if(tacno)
                             redosled.push("id7");
-
                     }
                     if (ime === "btn8") {
-                        if(tacno)
                             redosled.push("id8");
-
                     }
                     if (ime === "btn9") {
-                        if(tacno)
                             redosled.push("id9");
-
                     }
                     if (ime === "btn10") {
-                        if(tacno)
                             redosled.push("id10");
-
                     }
                     if (ime === "btn11") {
-                        if(tacno)
                             redosled.push("id11");
-
                     }
-                    if(tacno) {
 
                         slova.push(document.getElementById(redosled[br_sl]).value);
-
                         br_sl++;
                         slova_kon = slova.join("");
                         $('#kombinacija_taster').attr('placeholder', slova_kon);
                         validiraj();
-                    }
+
 
                 }
             }
 
-            /*Pritiskom na dugme obrisi skida poslednje slovo i proverava da li takva rec
-            * postoji u bazi*/
+            /**
+             * Pritiskom na dugme obrisi skida poslednje broj/operaciju koju je korisnik dodao i validira koji je sad
+             * moguci naredni broj/operacija
+             * @return void*/
             function brisi() {
                 if(igra_pocela && !igra_kraj && br_sl != 0) {
                     id = redosled.pop();
@@ -396,14 +392,13 @@
                     validiraj();
                 }
             }
-            /*Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
-            * Prikazuje najduzu rec u bazi koja postoji za tu kombinaciju slova*/
+            /**
+             * Poziva se kad je isteklo vreme ili kad je pritisnuta konacna rec.
+            * Prikazuje korisnikov rezultat
+             * @return void*/
             function kraj_igre() {
                 if(igra_pocela){
-
                     igra_kraj = true;
-
-
                     tajmer.stop();
                     if (slova_kon === "") res = "X";
                     else
@@ -414,11 +409,9 @@
                         catch (e) {
                             res = 'X';
                         }
-
                     elem = document.getElementById("dobio_je");
                     elem.innerHTML = res;
                     elem.value = res;
-
                     points = 0;
                     if(res !== "X"){
                         if(res === trazi_se) points = 30;
@@ -429,9 +422,7 @@
                             else if(razlika <= 20) points = 10;
                         }
                     }
-
                     var xhttp = new XMLHttpRequest();
-
                     xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
                     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                     xhttp.send("igra=moj_broj&ukupno="+points);

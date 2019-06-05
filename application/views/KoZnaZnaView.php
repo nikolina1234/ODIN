@@ -357,7 +357,7 @@
 									var xhttp = new XMLHttpRequest();
 									xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
 									xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-									xhttp.send("igra=koznazna&ukupno="+parseInt(document.getElementById('broj_poena').value));
+									xhttp.send("igra=ko_zna_zna&ukupno="+parseInt(document.getElementById('broj_poena').value));
 									xhttp.onload = (e) =>	
 									{
 

@@ -1,13 +1,17 @@
 <?php
 
-
+/**
+ *SlagalicaController - klasa za prikaz i upravljanje igrom slagalica
+ * @version 1.0
+ * @author Nikolina Stojić 0639/2016
+ */
 class SlagalicaController extends CI_Controller
 {
-    private $model;
-    //private $najduza_rec;
-
+    /**
+     *Ucitavanje igre i prikaz
+     * @return void
+     */
     public function index() {
-       // $this->load->view('inc/header');
 
             $this->load->model('SlagalicaModel');
             $this->niz = $this->SlagalicaModel->generate();
@@ -15,9 +19,12 @@ class SlagalicaController extends CI_Controller
             $this->load->view('SlagalicaView', $this->najduza_rec);
             $this->load->view('inc/footer');
 
-        //$najduza_rec = $this->SlagalicaModel->solve($niz);
     }
 
+    /**
+     *Vrsi proveru da li rec postoji u bazi
+     *@return boolean
+     */
     public function ceker(){
         $this->load->model('SlagalicaModel');
         if($this->SlagalicaModel->validate($this->input->get('word')))
