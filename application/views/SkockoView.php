@@ -68,7 +68,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "0"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input align="center" value = "<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		
@@ -260,16 +260,16 @@
 
 			for (j=0;j<4;j++)
 			{
-				komb.push(Math.floor(Math.random() * 6) );	
+				//komb.push(Math.floor(Math.random() * 6) );	
 			}
-			/*komb.push(0);
 			komb.push(0);
 			komb.push(0);
-			komb.push(0);*/
+			komb.push(0);
+			komb.push(0);
 			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
 			function vrati()
 			{
-				//alert("usao");
+				
 				if(br!=1 && br!=5 && br!=9 && br!=13 && br!=17 && br!=21 && br!=25)
 				{
 				var br1 = br-1;
@@ -507,7 +507,19 @@
 							
 							poeni = 15;	
 
-							document.getElementById('broj_poena').value = 15;
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 							
 							for (p=1;p<7;p++)
 							{
@@ -551,15 +563,7 @@
 								}
 							}
 
-							var xhttp = new XMLHttpRequest();
-
-							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-							xhttp.send("igra=skocko&ukupno="+poeni);
-							xhttp.onload = (e) =>	
-							{
-
-							}
+							
 
 					}
 					else
@@ -654,7 +658,20 @@
 							dugme.disabled = true;
 
 							poeni = 14;
-							document.getElementById('broj_poena').value = 14;
+							
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 								for (i=1;i<7;i++)
 								{
 									document.getElementById('id'+i).style.pointerEvents = 'none';
@@ -695,15 +712,6 @@
 										
 									}
 								}
-							var xhttp = new XMLHttpRequest();
-
-							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-							xhttp.send("igra=skocko&ukupno="+poeni);
-							xhttp.onload = (e) =>	
-							{
-
-							}
 
 						}
 						else
@@ -798,7 +806,20 @@
 							dugme.disabled = true;
 
 							poeni = 13;
-							document.getElementById('broj_poena').value = 13;
+
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 								for (i=1;i<7;i++)
 								{
 									var picture = document.getElementById('id'+i);
@@ -841,15 +862,7 @@
 									}
 								}
 
-								var xhttp = new XMLHttpRequest();
-
-							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-							xhttp.send("igra=skocko&ukupno="+poeni);
-							xhttp.onload = (e) =>	
-							{
-
-							}
+								
 
 						}
 						else
@@ -943,7 +956,19 @@ if (flag == true)
 							dugme.disabled = true;
 
 	poeni = 12;
-	document.getElementById('broj_poena').value = 12;
+	var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 		for (i=1;i<7;i++)
 		{
 			var picture = document.getElementById('id'+i);
@@ -986,15 +1011,7 @@ if (flag == true)
 			}
 		}
 
-							var xhttp = new XMLHttpRequest();
-
-							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-							xhttp.send("igra=skocko&ukupno="+poeni);
-							xhttp.onload = (e) =>	
-							{
-
-							}
+							
 
 }
 else
@@ -1089,7 +1106,20 @@ else
 							dugme.disabled = true;
 
 							poeni = 11;
-							document.getElementById('broj_poena').value = 11;
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+poeni);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+
 								for (i=1;i<7;i++)
 								{
 									var picture = document.getElementById('id'+i);
@@ -1132,15 +1162,7 @@ else
 									}
 								}
 
-								var xhttp = new XMLHttpRequest();
-
-								xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-								xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-								xhttp.send("igra=skocko&ukupno="+poeni);
-								xhttp.onload = (e) =>	
-								{
-
-								}
+								
 
 						}
 						else
@@ -1270,7 +1292,6 @@ for (i=0;i<4;i++)
 			if (flag) 
 			{
 				poeni = 10; 
-				document.getElementById('broj_poena').value = 10;
 							var xhttp = new XMLHttpRequest();
 
 							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
@@ -1280,12 +1301,14 @@ for (i=0;i<4;i++)
 							{
 
 							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 				}
 			else
 			{
 				poeni = 0;
-				document.getElementById('broj_poena').value = 0;
-
 							var xhttp = new XMLHttpRequest();
 
 							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
@@ -1295,6 +1318,10 @@ for (i=0;i<4;i++)
 							{
 
 							}
+
+							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+
+							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
 			}	
 					}
 
