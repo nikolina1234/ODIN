@@ -114,12 +114,12 @@ $dkonacno = $_SESSION['d_konacno'];
 		   </div>
 		   <br>
 		   <div class="row">
-		      <div class="offset-2 col-2" align="right"><input id="dugmeA" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi A" onclick="proveriA()"></div>
+		      <div class="offset-2 col-2" align="right"><input id="dugmeA" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi A" onclick="proveriA()" disabled=true></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="A" placeholder="A"></div>
 			  <div class="col-1"></div>
 			  <div class="col-1"><input type="text" size="10" maxlength="20" id="B" placeholder="B"></div>
 			  <div class="col-1"></div>
-			  <div class="col-2"><input id="dugmeB" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi B" onclick="proveriB()"></div>
+			  <div class="col-2"><input id="dugmeB" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi B" onclick="proveriB()" disabled=true></div>
 			  <div class="col-2"></div>
 		   </div>
 		   <br>
@@ -128,17 +128,17 @@ $dkonacno = $_SESSION['d_konacno'];
 			 <div class="col-2"></div>
 			 <div class="col-2" align="center"><input id="Konacno" type="text" size="15"  maxlength="20" placeholder="Konacno"></div>
 			 <div class="col-1"></div>
-			 <div class="col-2"><input id="dugmeKon" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi Konacno"  align="right" onclick="proveriKonacno()"></div>
+			 <div class="col-2"><input id="dugmeKon" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi Konacno"  align="right" onclick="proveriKonacno()" disabled=true></div>
 			 <div class="col-2"></div>
 		   </div>
 		   <br>
 		   <div class="row">
-		   <div class="offset-2 col-2" align="right"><input id="dugmeC" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi C" onclick="proveriC()"></div>
+		   <div class="offset-2 col-2" align="right"><input id="dugmeC" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi C" onclick="proveriC()" disabled=true></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="C" placeholder="C"></div>
 			  <div class="col-1"></div>
 			  <div class="col-1"><input type="text" size="10"  maxlength="20" id="D" placeholder="D"></div>
 			  <div class="col-1"></div>
-			  <div class="col-2"><input id="dugmeD" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi D"  onclick="proveriD()"></div>
+			  <div class="col-2"><input id="dugmeD" type="button" class="btn btn-secondary btn-block btn-sm btn-info" value="Potvrdi D"  onclick="proveriD()" disabled=true></div>
 			  <div class="col-2"></div>
 		   </div>
 		   <br>
@@ -176,6 +176,11 @@ $dkonacno = $_SESSION['d_konacno'];
 </div>
 </div>
 <script>
+		var flag = 0;
+		var flagA = 0;
+		var flagB = 0;
+		var flagC = 0;
+		var flagD = 0;
 		
 		document.getElementById('A1').addEventListener("click", function(){promeni('A1');});
 		
@@ -225,96 +230,192 @@ $dkonacno = $_SESSION['d_konacno'];
 
 		switch(id){
 			case 'A1':
+			flag = 1;
+			flagA = 1;
+			var dugme = document.getElementById("dugmeA");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var a1 = "<?php echo $a1;?>"
 			document.getElementById(id).innerHTML = a1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'A2':
+			flag = 1;
+			flagA = 1;
+			var dugme = document.getElementById("dugmeA");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var a2 = "<?php echo $a2;?>"
 			document.getElementById(id).innerHTML = a2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 			
 			case 'A3':
+			flag = 1;
+			flagA = 1;
+			var dugme = document.getElementById("dugmeA");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var a3 = "<?php echo $a3;?>"
 			document.getElementById(id).innerHTML = a3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'A4':
+			flag = 1;
+			flagA = 1;
+			var dugme = document.getElementById("dugmeA");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var a4 = "<?php echo $a4;?>"
 			document.getElementById(id).innerHTML = a4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B1':
+			flag = 1;
+			flagB = 1;
+			var dugme = document.getElementById("dugmeB");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var b1 = "<?php echo $b1;?>"
 			document.getElementById(id).innerHTML = b1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B2':
+			flag = 1;
+			flagB = 1;
+			var dugme = document.getElementById("dugmeB");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var b2 = "<?php echo $b2;?>"
 			document.getElementById(id).innerHTML = b2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B3':
+			flag = 1;
+			flagB = 1;
+			var dugme = document.getElementById("dugmeB");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var b3 = "<?php echo $b3;?>"
 			document.getElementById(id).innerHTML = b3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'B4':
+			flag = 1;
+			flagB = 1;
+			var dugme = document.getElementById("dugmeB");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var b4 = "<?php echo $b4;?>"
 			document.getElementById(id).innerHTML = b4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C1':
+			flag = 1;
+			flagC = 1;
+			var dugme = document.getElementById("dugmeC");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var c1 = "<?php echo $c1;?>"
 			document.getElementById(id).innerHTML = c1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C2':
+			flag = 1;
+			flagC = 1;
+			var dugme = document.getElementById("dugmeC");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var c2 = "<?php echo $c2;?>"
 			document.getElementById(id).innerHTML = c2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C3':
+			flag = 1;
+			flagC = 1;
+			var dugme = document.getElementById("dugmeC");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var c3 = "<?php echo $c3;?>"
 			document.getElementById(id).innerHTML = c3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'C4':
+			flag = 1;
+			flagC = 1;
+			var dugme = document.getElementById("dugmeC");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var c4 = "<?php echo $c4;?>"
 			document.getElementById(id).innerHTML = c4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D1':
+			flag = 1;
+			flagD = 1;
+			var dugme = document.getElementById("dugmeD");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var d1 = "<?php echo $d1;?>"
 			document.getElementById(id).innerHTML = d1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D2':
+			flag = 1;
+			flagD = 1;
+			var dugme = document.getElementById("dugmeD");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var d2 = "<?php echo $d2;?>"
 			document.getElementById(id).innerHTML = d2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D3':
+			flag = 1;
+			flagD = 1;
+			var dugme = document.getElementById("dugmeD");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var d3 = "<?php echo $d3;?>"
 			document.getElementById(id).innerHTML = d3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
 
 			case 'D4':
+			flag = 1;
+			flagD = 1;
+			var dugme = document.getElementById("dugmeD");
+				dugme.disabled = false;
+				 dugme = document.getElementById("dugmeKon");
+				dugme.disabled = false;
 			var d4 = "<?php echo $d4;?>"
 			document.getElementById(id).innerHTML = d4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
@@ -327,6 +428,9 @@ $dkonacno = $_SESSION['d_konacno'];
 	
 	function proveriA()
 		{
+			if(flagA == 1){
+				var dugme111 = document.getElementById("dugmeA");
+				dugme111.disabled = false;
 			var inputBox = document.getElementById('A');
 			var str = "<?php echo $_SESSION['a_konacno']; ?>"
 			var res = str.toLowerCase();
@@ -361,10 +465,19 @@ $dkonacno = $_SESSION['d_konacno'];
 			{
 				inputBox.value="";
 			}
+			}
+			else
+			{
+				var dugme = document.getElementById("dugmeA");
+				dugme.disabled = true;
+			}
 
 		}
 		function proveriB()
 		{
+			if(flagB==1){
+				var dugme111 = document.getElementById("dugmeB");
+				dugme111.disabled = false;
 			var inputBox = document.getElementById('B');
 			var str = "<?php echo $_SESSION['b_konacno']; ?>"
 			var res = str.toLowerCase();
@@ -399,12 +512,21 @@ $dkonacno = $_SESSION['d_konacno'];
 			{
 				inputBox.value="";
 			}
+			}
+			else
+			{
+				var dugme = document.getElementById("dugmeB");
+				dugme.disabled = true;
+			}
 
 		}
 
 
 		function proveriC()
 		{
+			if(flagC==1){
+				var dugme111 = document.getElementById("dugmeC");
+				dugme111.disabled = false;
 			var inputBox = document.getElementById('C');
 			var str = "<?php echo $_SESSION['c_konacno']; ?>"
 			var res = str.toLowerCase();
@@ -439,12 +561,22 @@ $dkonacno = $_SESSION['d_konacno'];
 			{
 				inputBox.value="";
 			}
+			}
+			else
+			{
+				var dugme = document.getElementById("dugmeC");
+				dugme.disabled = true;
+			}
 
 		}
 
 
 		function proveriD()
 		{
+			if(flagD==1){
+				
+			var dugme111 = document.getElementById("dugmeD");
+				dugme111.disabled = false;
 			var inputBox = document.getElementById('D');
 			var str = "<?php echo $_SESSION['d_konacno']; ?>"
 			var res = str.toLowerCase();
@@ -479,11 +611,20 @@ $dkonacno = $_SESSION['d_konacno'];
 			{
 				inputBox.value="";
 			}
+			}
+			else
+			{
+				var dugme = document.getElementById("dugmeD");
+				dugme.disabled = true;
+			}
 
 		}
 
 		function proveriKonacno()
 		{
+			if(flag==1){
+				var dugme111 = document.getElementById("dugmeKon");
+				dugme111.disabled = false;
 			var inputBox = document.getElementById('Konacno');
 			var str = "<?php echo $_SESSION['asoc_konacno']; ?>"
 			var res = str.toLowerCase();
@@ -600,6 +741,12 @@ $dkonacno = $_SESSION['d_konacno'];
 			else{
 				inputBox.value="";
 			}
+		}
+		else
+		{
+			var dugme = document.getElementById("dugmeKon");
+				dugme.disabled = true;
+		}
 
 		}
 //window.addEventListener('load', );
