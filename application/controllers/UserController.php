@@ -63,19 +63,11 @@
                     else
                         if ($success == 0)
                         {
-                            $gameplayNameSet = $this->UserModel->getGameplayName($user);
+                            //$gameplayNameSet = $this->UserModel->getGameplayName($user);
 
-                            if ($gameplayNameSet == 0)
-                            {
-                                $_POST['hellouser'] = $user;
-                                $this->view('ObicanKorisnikHomePage');
-                            }
-                            else
-                            {
                                 session_start();
                                 $_SESSION['username'] = $user;               
-                                $this->view("ObicanKorisnikAfterRegistrationPage");
-                            }
+                                $this->view('ObicanKorisnikHomePage');
                               
                         }
                         else
@@ -161,7 +153,7 @@
                     $_SESSION['username'] = $username;
 
                     $this->load->view('inc/header');
-                    $this->load->view("ObicanKorisnikAfterRegistrationPage");
+                    $this->view('ObicanKorisnikHomePage');
                     $this->load->view('inc/footer');
                }
                else
