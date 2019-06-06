@@ -38,8 +38,8 @@ $bkonacno = $_SESSION['b_konacno'];
 $ckonacno = $_SESSION['c_konacno'];
 $dkonacno = $_SESSION['d_konacno'];
 
-    session_start();
-    $_SESSION['uk_poeni'] = $_SESSION['spojnice'] + $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['ko_zna_zna'];
+    //session_start();
+    $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['ko_zna_zna'] + $_SESSION['spojnice'];
 
 ?>
 
