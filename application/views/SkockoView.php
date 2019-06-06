@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
+?>
+
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
@@ -68,26 +73,14 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input class = "text-center rounded"  value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		
 		
 		
 		<div class="col-8 text-center border border-dark mt-sm-4">
-          <!--  <table class="table">
-                <tr>
-                    <td align="center" colspan="2">
-                        <label> 
-                            <?php
-                                if (isset($_SESSION['opis']))
-                                {
-                                    echo "<h4>".$_SESSION['opis']->opis_spojnice."</h4>";
-                                    unset($_SESSION['opis']);
-                                }
-                            ?>
-                        </label>
-                    </td> -->
+         
 					<br>
 					<div class="row">
 					  <div class="col-4" style="display:inline;">
@@ -260,12 +253,12 @@
 
 			for (j=0;j<4;j++)
 			{
-				//komb.push(Math.floor(Math.random() * 6) );	
+				komb.push(Math.floor(Math.random() * 6) );	
 			}
+			/*komb.push(0);
 			komb.push(0);
 			komb.push(0);
-			komb.push(0);
-			komb.push(0);
+			komb.push(0);*/
 			//alert(komb[0]+":"+komb[1]+":"+komb[2]+":"+komb[3]);
 			function vrati()
 			{
@@ -516,10 +509,12 @@
 							{
 
 							}
+							//parseint();
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 							
 							for (p=1;p<7;p++)
 							{
@@ -669,9 +664,10 @@
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 								for (i=1;i<7;i++)
 								{
 									document.getElementById('id'+i).style.pointerEvents = 'none';
@@ -817,9 +813,10 @@
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 								for (i=1;i<7;i++)
 								{
 									var picture = document.getElementById('id'+i);
@@ -966,9 +963,10 @@ if (flag == true)
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 		for (i=1;i<7;i++)
 		{
 			var picture = document.getElementById('id'+i);
@@ -1116,9 +1114,10 @@ else
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 
 								for (i=1;i<7;i++)
 								{
@@ -1302,13 +1301,26 @@ for (i=0;i<4;i++)
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 				}
 			else
 			{
-				poeni = 0;
+				//poeni = 0;
+				            var brojac1 = 0;
+							for (i=0;i<4;i++)
+                            {
+	                          if (boje[i]=='red')
+	                           {
+	                          	    brojac1++;
+	                           }
+                            }
+							if(brojac1==3) poeni = 3;
+							else if(brojac1==2) poeni = 2;
+							else if(brojac1==1) poeni = 1;
+							else if(brojac1==0) poeni = 0;
 							var xhttp = new XMLHttpRequest();
 
 							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
@@ -1319,9 +1331,10 @@ for (i=0;i<4;i++)
 
 							}
 
-							var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
 
-							document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                            elem.value =  nm + poeni;
 			}	
 					}
 
