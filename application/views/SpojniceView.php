@@ -13,7 +13,10 @@
 
 <!-- potrebno za timer -->
 <script src="resources/jquery.progressBarTimer.js"></script>
-
+<?php
+    //session_start();
+    $_SESSION['uk_poeni'] = $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko']; + $_SESSION['ko_zna_zna'];
+?>
 <div class="container">
 
 
@@ -31,7 +34,7 @@
                             Pravila igre
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item-text">Pravila spojnica</a>
+                            <a class="dropdown-item-text">Za svaki pogodjen par pojmova dobijate po 4 poena.</a>
 
                         </div>
                     </div>
@@ -49,13 +52,25 @@
         </div>
     <!-- Izgled igrice  -->
     <div class="row h-60" style="background-color:#F0F0F0">
+	
+	
         <!-- Radi lakseg pozicioniranja a i prikaza igraca -->
         <div class="col-2">
-            <div class="form-group">
-                <label for="name" class="control-label">Ime korisnika</label>
-                <input type="number" value='' class="form-control" id="broj_poena" readonly style = "background-color: blue;">
+			 <div class="form-group align-items-center">
+                <center>
+                    <label for="name" class="control-label"><?php
+                        if(!empty($_SESSION['gostime'])) echo $_SESSION['gostime'];
+                        else if(!empty($_SESSION['username'])) echo $_SESSION['username'];
+                        else
+                                echo 'GOST';
+                    ?></label>
+                </center>
+
+                <input class = "text-center rounded" value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
+		
+		
         <!-- Prikazi buttona za slova-->
         <div class="col-8 text-center border border-dark mt-sm-4">
             <table class="table">
@@ -143,7 +158,8 @@
             </form>
         </div>
         <script lang="javascript">
-
+		
+            var poeni = 0;
             var br = 0;
             var kliknuto;
 			
@@ -204,11 +220,41 @@
                             kliknutoDugme.className = "btn btn-success text-light btn-lg border border-dark";
 
                             dugme.className = "btn btn-success text-light btn-lg border border-dark";
+							
+							poeni += 4;
+							
+							var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=spojnice&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
                         }
                         else
                         {
                             
-                            kliknutoDugme.className = "btn btn-danger text-light btn-lg border border-dark";    
+                            kliknutoDugme.className = "btn btn-danger text-light btn-lg border border-dark";  
+							
+							poeni += 0;
+							
+							var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=spojnice&ukupno="+poeni);
+                    xhttp.onload = (e) => {
+
+                    }
+
+                    nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
+
+                    elem.value =  nm + poeni;
                         }
                     }
                 });
