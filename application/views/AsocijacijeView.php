@@ -12,7 +12,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- potrebno za timer -->
-<script src="resources/jquery.progressBarTimer.js"></script>
+<script src="http://localhost/SlagalicaIgniter/resources/jquery.progressBarTimer.js"></script>
 <?php
 
 //ovde treba da se procita onaj niz iz asocijacijeController.php, tj sve kolone i da se samo ubace ovde... i to je to... TREBALO BI DA RADI
@@ -196,6 +196,61 @@ $dkonacno = $_SESSION['d_konacno'];
 </div>
 </div>
 <script>
+
+				var tajmer = $('#tajmer_bar').progressBarTimer({
+                timeLimit: 60,
+                warningThreshold: 20,
+                smooth: true,
+                baseStyle: 'bg-success',
+                warningStyle: 'bg-danger',
+                completeStyle: '',
+                onFinish:function () {				
+					document.getElementById('A1').disabled = true;
+				
+					document.getElementById('A2').disabled = true;
+					
+					document.getElementById('A3').disabled = true;
+					
+					document.getElementById('A4').disabled = true;
+					
+					document.getElementById('B1').disabled = true;
+					
+					document.getElementById('B2').disabled = true;
+					
+					document.getElementById('B3').disabled = true;
+					
+					document.getElementById('B4').disabled = true;
+					
+					document.getElementById('C1').disabled = true;
+					
+					document.getElementById('C2').disabled = true;
+					
+					document.getElementById('C3').disabled = true;
+					
+					document.getElementById('C4').disabled = true;
+					
+					document.getElementById('D1').disabled = true;
+					
+					document.getElementById('D2').disabled = true;
+					
+					document.getElementById('D3').disabled = true;
+					
+					document.getElementById('D4').disabled = true;
+
+					document.getElementById('dugmeA').disabled = true;
+					document.getElementById('dugmeB').disabled = true;
+					document.getElementById('dugmeC').disabled = true;
+					document.getElementById('dugmeD').disabled = true;
+					document.getElementById('dugmeKon').disabled = true;
+
+					//document.getElementById('sledeca').disabled = false;
+                }
+				});				
+
+				tajmer.start();
+
+
+
 		var flag = 0;
 		var flagA = 0;
 		var flagB = 0;
@@ -234,6 +289,8 @@ $dkonacno = $_SESSION['d_konacno'];
 		document.getElementById('D3').addEventListener("click", function(){promeni('D3');});
 		
 		document.getElementById('D4').addEventListener("click", function(){var par = 'D4'; promeni(par);});
+		
+
 		
 
 		var akon = "<?php echo $_SESSION['a_konacno']; ?>";
@@ -697,6 +754,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
+				tajmer.stop();
 				poeni += 8 + 16 - flagA - flagB - flagC - flagD + 12 - flag;
 				inputBox.value = str;
 				inputBox.readOnly=true;

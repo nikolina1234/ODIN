@@ -11,7 +11,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- potrebno za timer -->
-<script src="resources/jquery.progressBarTimer.js"></script>
+<script src="http://localhost/SlagalicaIgniter/resources/jquery.progressBarTimer.js"></script>
 <?php
 $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'];
 ?>
@@ -130,6 +130,26 @@ $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESS
 </div>
 
 <script>
+
+var tajmer = $('#tajmer_bar').progressBarTimer({
+                timeLimit: 60,
+                warningThreshold: 20,
+                smooth: true,
+                baseStyle: 'bg-success',
+                warningStyle: 'bg-danger',
+                completeStyle: '',
+                onFinish:function () {				
+					document.getElementById('A').disabled = true;
+					document.getElementById('B').disabled = true;
+					document.getElementById('C').disabled = true;
+					document.getElementById('D').disabled = true;
+					document.getElementById('neznam').disabled = true;
+
+					document.getElementById('sledeca').disabled = false;
+                }
+				});				
+
+		tajmer.start();
 
 	    var kliknutoDugme;
 		var poeni = 0;
@@ -386,6 +406,7 @@ $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESS
 
 									document.getElementById('neznam').disabled = true;
 									document.getElementById('sledeca').disabled = false;
+									tajmer.stop();
 
 
 								}

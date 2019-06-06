@@ -16,7 +16,7 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- potrebno za timer -->
-<script src="resources/jquery.progressBarTimer.js"></script>
+<script src="http://localhost/SlagalicaIgniter/resources/jquery.progressBarTimer.js"></script>
 <style>
 .circle{
 	 height: 35px;
@@ -231,6 +231,83 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 
 		<script>
 
+
+			var tajmer = $('#tajmer_bar').progressBarTimer({
+                timeLimit: 60,
+                warningThreshold: 20,
+                smooth: true,
+                baseStyle: 'bg-success',
+                warningStyle: 'bg-danger',
+                completeStyle: '',
+                onFinish:function () {
+						
+					for (i=1;i<7;i++)
+					{
+						var picture = document.getElementById('id'+i);
+
+						picture.style.pointerEvents = 'none';
+					}
+
+					for (i=25;i<29;i++)
+								{
+									switch(komb[i-25])
+									{
+												case 0:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Herc.png";
+												break;
+
+												case 1:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Karo.png";
+												break;
+
+												case 2:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/ODIN.png";
+												break;
+
+												case 3:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Pik.png";
+												break;
+
+												case 4:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Zvezda.jpg";
+												break;
+
+												case 5:
+												document.getElementById(i).src = "http://localhost/SlagalicaIgniter/application/views/images/Tref.png";
+												break;
+
+											
+										
+									}
+								}
+
+					document.getElementById("sledecaIgra").disabled = false;
+
+							var xhttp = new XMLHttpRequest();
+
+							xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+							xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+							xhttp.send("igra=skocko&ukupno="+0);
+							xhttp.onload = (e) =>	
+							{
+
+							}
+							//parseint();
+
+							nm= <?php echo $_SESSION['uk_poeni']?>;
+                            elem = document.getElementById("broj_poena");
+
+                            elem.value =  nm + poeni;
+
+							
+				  
+                }
+				});	
+				
+				tajmer.start();
+
+				
+		
 		var poeni = 0;
 			/**
 			 * Herc - 0
@@ -496,7 +573,8 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 
 					
 					if (flag == true)
-					{				
+					{			
+							tajmer.stop();	
                             dugme = document.getElementById('bb2');
 							dugme.disabled = true;
 							
@@ -651,6 +729,8 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 
 						if (flag == true)
 						{
+
+							tajmer.stop();
 							dugme = document.getElementById('bb3');
 							dugme.disabled = true;
 
@@ -800,6 +880,7 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 
 						if (flag == true)
 						{
+							tajmer.stop();
 							dugme = document.getElementById('bb4');
 							dugme.disabled = true;
 
@@ -951,6 +1032,7 @@ for (i=0;i<4;i++)
 
 if (flag == true)
 {
+	tajmer.stop();
 	dugme = document.getElementById('bb5');
 							dugme.disabled = true;
 
@@ -1102,6 +1184,7 @@ else
 
 						if (flag == true)
 						{
+							tajmer.stop();
 							dugme = document.getElementById('bb6');
 							dugme.disabled = true;
 
@@ -1290,6 +1373,8 @@ for (i=0;i<4;i++)
 					}					
 				
 			}
+
+			tajmer.stop();
 			if (flag) 
 			{
 				poeni = 10; 
