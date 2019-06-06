@@ -149,7 +149,7 @@
                if ($success == 0)
                {
                     //load after reg home page
-                    session_start();
+                   if (session_status() == PHP_SESSION_NONE) { session_start();}
 
                     $_SESSION['username'] = $username;
 
