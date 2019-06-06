@@ -39,7 +39,7 @@ $ckonacno = $_SESSION['c_konacno'];
 $dkonacno = $_SESSION['d_konacno'];
 
     //session_start();
-    $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['ko_zna_zna'] + $_SESSION['spojnice'];
+    $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['spojnice'] + $_SESSION['ko_zna_zna'];
 
 ?>
 
@@ -459,7 +459,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['a_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
-				poeni = 3 + 4 - flagA;
+				poeni += 3 + 4 - flagA;
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -517,7 +517,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['b_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
-				poeni = 3 + 4 - flagB;
+				poeni += 3 + 4 - flagB;
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -577,7 +577,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['c_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
-				poeni = 3 + 4 - flagC;
+				poeni += 3 + 4 - flagC;
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -638,7 +638,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['d_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
-				poeni = 3 + 4 - flagD;
+				poeni += 3 + 4 - flagD;
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
@@ -697,7 +697,7 @@ $dkonacno = $_SESSION['d_konacno'];
 
 			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
-				poeni = 8 + 16 - flagA - flagB - flagC - flagD + 12 - flag;
+				poeni += 8 + 16 - flagA - flagB - flagC - flagD + 12 - flag;
 				inputBox.value = str;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
