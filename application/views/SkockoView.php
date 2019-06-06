@@ -41,7 +41,9 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
                             Pravila igre
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item-text">Pravila skocko</a>
+                            <a class="dropdown-item-text">10 poena dobijate za pogodjenu kombinaciju.
+							Bonus poeni 5 do 1 u zavisnosti u kom pokusaju pogodite.
+							</a>
 
                         </div>
                     </div>

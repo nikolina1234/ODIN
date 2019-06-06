@@ -60,7 +60,9 @@ $dkonacno = $_SESSION['d_konacno'];
                             Pravila igre
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item-text">Pravila asocijacija</a>
+                            <a class="dropdown-item-text">Morate prvo otvoriti bilo koje polje da biste mogli da pogadjate. Za tacno konacno resenje dobijate 8 poena,
+							za svaku pogodjenu kolonu dobijate po 3 poena, i za svako neotvoreno polje dobijane 1 poen.
+							</a>
 
                         </div>
                     </div>
