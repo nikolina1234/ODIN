@@ -30,7 +30,7 @@ $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESS
                             Pravila igre
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item-text">Pravila ko zna zna</a>
+                            <a class="dropdown-item-text">Za tacan odgovor dobijate 5 poena, za netacan odgovor dobijate -2 poena, ako ne znate ne dobijate poene.</a>
 
                         </div>
                     </div>
