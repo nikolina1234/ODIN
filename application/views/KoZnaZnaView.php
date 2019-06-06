@@ -12,6 +12,9 @@
 
 <!-- potrebno za timer -->
 <script src="resources/jquery.progressBarTimer.js"></script>
+<?php
+$_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'];
+?>
 
 <div class="container">
     <!-- Kao zaglavlje za ime igre i pravila igre-->
@@ -64,7 +67,7 @@
                     ?></label>
                 </center>
 
-                <input align="center" value = "<?php if (isset($_SESSION['broj_poena'])) echo $_SESSION['uk_poeni']; else echo 0; ?>"   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
+                <input class = "text-center rounded" value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
             </div>
         </div>
 		
@@ -158,23 +161,24 @@
 
 		function proveri(odgovor,id)
 		{
+			poeni+=0;
 			 kliknutoDugme = document.getElementById(id);
 			 if (id!='neznam')
 			 {
 				if (odgovor == tacan0)
 				{
 				kliknutoDugme.className = 'btn btn-success';
-				poeni = 5;
+				poeni += 5;
 				}
 				else
 				{
 					kliknutoDugme.className = 'btn btn-danger';
-					poeni = -2;
+					poeni -= 2;
 				}
 			 }
 			 else
 			 	{
-					 poeni = 0;
+					 poeni += 0;
 
 					 if (document.getElementById('A').value == tacan0)
 					 {
@@ -212,18 +216,20 @@
 
 				// }
 				var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=ko_zna_zna&ukupno="+poeni);
+                    xhttp.onload = (e) => {
 
-				xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-				xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-				xhttp.send("igra=koznazna&ukupno="+poeni);
-				xhttp.onload = (e) =>	
-				{
+                    }
 
-				}
+				/*var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
 
-				var ukupno = '<?php  if (isset($_SESSION['uk_poeni'])) echo $_SESSION['uk_poeni']; else echo 0; ?>';
+				document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;*/
+				nm= <?php echo $_SESSION['uk_poeni']?>;
+                    elem = document.getElementById("broj_poena");
 
-				document.getElementById('broj_poena').value = parseInt(ukupno) + poeni;
+                    elem.value =  nm + poeni;
 			
 				setTimeout(callAgain,1000);
 				
@@ -366,14 +372,13 @@
 							}
 							else
 								{
-									var xhttp = new XMLHttpRequest();
-									xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
-									xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-									xhttp.send("igra=ko_zna_zna&ukupno="+parseInt(document.getElementById('broj_poena').value));
-									xhttp.onload = (e) =>	
-									{
+									/*var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", "http://localhost/SlagalicaIgniter/PoeniController/update");
+                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send("igra=ko_zna_zna&ukupno="+document.getElementById("broj_poena").value);
+                    xhttp.onload = (e) => {
 
-									}
+                    }*/
 									document.getElementById('A').disabled = true;
 									document.getElementById('B').disabled = true;
 									document.getElementById('C').disabled = true;
