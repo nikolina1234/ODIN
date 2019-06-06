@@ -15,7 +15,7 @@
 <script src="resources/jquery.progressBarTimer.js"></script>
 <?php
     //session_start();
-    $_SESSION['uk_poeni'] = $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko']; + $_SESSION['ko_zna_zna'];
+    $_SESSION['uk_poeni'] = $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['ko_zna_zna'];
 ?>
 <div class="container">
 
