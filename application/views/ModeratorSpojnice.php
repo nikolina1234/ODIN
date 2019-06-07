@@ -1,3 +1,6 @@
+<!--
+    @author Denis Dimitrijević 0107/16
+-->
 
 		<div class="container">
 			<div class="row " style="height:14%;background-color:#459BF0;">
@@ -18,7 +21,9 @@
 					</form>
 				 </div>
 			</div>
-			
+			<!--
+			Izgled za dodavanje spojnica u bazu
+			-->
 			<div class="row h-57" style="background-color:#F0F0F0">
 				<div class="col-7">
 					<img class="img img-fluid mx-auto d-block" style="width:60%;height:auto;" src="http://localhost/SlagalicaIgniter/images/ODIN.png">
