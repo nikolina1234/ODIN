@@ -45,7 +45,9 @@
        }
        
 	   /*
-	   	prikaz stranice, prekopirano sa CodeIgniter tutorial-a
+	   	Prikaz stranice, prekopirano sa CodeIgniter tutorial-a
+            
+           	@args : page - stranica za prikaz
 	   */
 	   public function view($page)
         {
