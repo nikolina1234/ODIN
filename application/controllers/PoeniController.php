@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) { session_start();}
 
 /**
  *PoeniController - klasa za upravljanje i pamcenje poena po igrama
