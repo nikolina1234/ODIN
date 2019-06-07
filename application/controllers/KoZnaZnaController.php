@@ -1,8 +1,15 @@
 <?php
 
+
+	/*
+		Author: Ognjen Petkovic 0526/2016
+	*/
     class KoZnaZnaController extends CI_Controller
     {
 
+		/*
+			Ucitavanje ko zna zna igrice
+		*/	
         public function KoZnaZna()
         {
             $this->load->model('KoZnaZnaModel');
@@ -49,6 +56,11 @@
              $this->view('KoZnaZnaView');
         }
        
+	    /*
+				Ucitavanje view-abs
+				
+				@args - $page
+		*/
         public function view($page)
         {
             if (!file_exists(APPPATH.'views/'.$page.'.php'))
@@ -60,7 +72,9 @@
             $this->load->view($page,[]);
             $this->load->view('inc/footer');
         }
-
+		/*
+			Provera odgovora				
+		*/
         public function check()
         {
             $odgovor = $_POST['odgovor'];

@@ -1,23 +1,47 @@
+
+
 <?php
 
+	/*
+		Author : Nikolina Stojić 0639/2016
+		
+		Author : Ognjen Petkovic 0526/2016
+	*/
     class UserController extends CI_Controller
     {
         private $model;
 
+
+		/*
+			Podrazumevanja funkcija
+			
+		*/
         public function index()
         {
             $this->view();
         }
-
+		/*
+			Prikaz home page-a obicnog korisnika
+			
+		*/
         public function userHomePage()
         {
             $this->view('ObicanKorisnikHomePage');
         }
+		
+		/*
+			Prikaz home page-a admina
+		*/
         public function adminHomePage()
         {
             $this->view('AdminHomePage');
         }
 
+		/*
+			Funkcija za ucitavanje view-a
+			
+			@args - $page
+		*/
         public function view($page = 'HomePage')
         {
             if (!file_exists(APPPATH.'views/'.$page.'.php'))
@@ -29,7 +53,10 @@
             $this->load->view($page,[]);
             $this->load->view('inc/footer');
         }
-
+		
+		/*
+			Autentikacija logovanja
+		*/
         public function authenticateLogin()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -98,7 +125,11 @@
                     unset($_POST['user']);
                     unset($_POST['pass']);
         }
-
+		
+		
+		/*
+			Autentikacija registracije
+		*/
         public function authenticateRegistration()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -196,6 +227,10 @@
             }
         }
 
+
+		/*
+			Funkcija se ne koristi! TODO: Delete
+		*/
         public function authenticateGameplayName()
         {
             if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -234,11 +269,20 @@
             }
         }
 
+
+		/*
+			Prikaz home page-a gosta
+			
+		*/
         public function guestPage()
         {
             $this->view("GostHomePage");
         }
 
+
+		/*
+			Prikaz rang liste
+		*/
         public function rangLista()
         {
             $this->load->model("UserModel");
