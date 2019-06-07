@@ -1,6 +1,6 @@
 
 <?php
-   /**
+   /*
  *SpojniceModel - model za igranje igre Spojnice
  *@version 1.0
  *@author Denis Dimitrijević 0107/16
@@ -66,7 +66,7 @@
                 }
             return $retVal;
         }
-/**
+/*
 * Prosledjuju mu se argumenti sa opisom i vraća iz baze par spojnica sa opisima
 * @return boolean
 */
