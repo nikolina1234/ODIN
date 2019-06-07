@@ -1,6 +1,15 @@
 <!--
     @author Nikolina Stojić 0639/2016
 -->
+<?php
+    if(empty($_SESSION['slagalica'])) $_SESSION['slagalica'] = 0;
+    if(empty($_SESSION['moj_broj'])) $_SESSION['moj_broj'] = 0;
+    if(empty($_SESSION['skocko'])) $_SESSION['skocko'] = 0;
+    if(empty($_SESSION['ko_zna_zna'])) $_SESSION['ko_zna_zna'] = 0;
+    if(empty($_SESSION['asocijacije'])) $_SESSION['asocijacije'] = 0;
+    if(empty($_SESSION['spojnice'])) $_SESSION['spojnice'] = 0;
+    $_SESSION['uk_poeni'] = $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESSION['skocko'] + $_SESSION['ko_zna_zna'] + $_SESSION['spojnice'] + $_SESSION['asocijacije'];
+?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
