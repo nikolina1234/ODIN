@@ -1,3 +1,6 @@
+<!--
+    @author Igor Durić 0646/16
+-->
 <?php
 
     class AdminController extends CI_Controller
