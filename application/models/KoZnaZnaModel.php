@@ -1,13 +1,21 @@
 <?php
-
+	/*
+		Author: Ognjen Petkovic 0526/2016
+	*/
     class KoZnaZnaModel extends CI_Model
     {
+		/*
+			Konstruktor
+		*/
         public function __construct()
         {
             parent::__construct(); 
             $this->load->database();
         }
 
+		/*
+			Vraca 5 random pitanja
+		*/
        public function getKoZnaZna()
        {    
 
@@ -58,7 +66,10 @@
 
          return $retVal;
        }
-
+		
+	   /*
+			Proverava odgovor, vraca true/false
+	   */
        public function proveri($odgovor,$pitanje)
        {
             $query = $this->db->query("SELECT * FROM pitanje WHERE pitanje='$pitanje' and tacan = '$odgovor' ");

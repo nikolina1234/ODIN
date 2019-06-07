@@ -1,21 +1,32 @@
 <?php
 session_start();
+
+	/*
+		Author : Nikolina Stojić 0639/2016
+		
+		Author : Ognjen Petkovic 0526/2016
+	*/
     class UserModel extends CI_Model
     {
+		/*
+			Konstruktor
+		*/
         public function __construct()
         {
             parent::__construct(); 
             $this->load->database();
         }
         /**
-         * retVal:
-         *  -1 -> wrong username
-         * 
-         *   0 -> success (ordinary user)
-         *   2 -> succes (admin)
-         *   3 -> success (moderator)
-         * 
-         *   1 -> wrong pass
+		   
+		  @args - $user,$pass 
+          @retVal:
+           -1 -> wrong username
+          
+            0 -> success (ordinary user)
+            2 -> succes (admin)
+            3 -> success (moderator)
+          
+            1 -> wrong pass
          */
         public function loginAuthenticate($user,$pass)
         {        
@@ -47,15 +58,17 @@ session_start();
             }
         }
 
-        /**
-         * retVal:
-         *   0 -> success
-         *  -1 -> username already exists or username is empty
-         *  -2 -> did not check usertype
-         *  -3 -> did not enter password
-         *  -4 -> pass conf and pass do not match
-         *  -5 -> did not check sex type
-         *  -6 -> bad e-mail format or e-mail already exists
+        /*
+		
+		   @args - $usertype,$username,$password,$passwordConf,$sex,$email	
+          retVal:
+           0 -> success
+           -1 -> username already exists or username is empty
+           -2 -> did not check usertype
+           -3 -> did not enter password
+           -4 -> pass conf and pass do not match
+           -5 -> did not check sex type
+           -6 -> bad e-mail format or e-mail already exists
          */
         function authenticateRegistration($usertype,$username,$password,$passwordConf,$sex,$email)
         {
@@ -121,10 +134,7 @@ session_start();
         }
 
         /**
-         * retVal:
-         * 
-         * -1: -> gameplay name already exists
-         *  0: -> success
+          Ova funkcija se ne koristi! TODO: Delete
          */
         public function authenticateGameplayName($gameplayname,$user)
         {
@@ -142,11 +152,8 @@ session_start();
                 return 0;
         }
 
-          /**
-         * retVal:
-         * 
-         * -1: -> gameplay name does not exist
-         *  0: -> success
+          /*
+			Ova funkcija se ne koristi! TODO: Delete
          */
         public function getGameplayName($user)
         {
@@ -166,6 +173,9 @@ session_start();
             }
         }
 
+		/*	
+			Vraca korisnike sortirane po broju poena
+		*/
         public function getKorisnici()
         {
             $query = $this->db->query("SELECT * FROM KORISNIK ORDER BY br_poena DESC");
