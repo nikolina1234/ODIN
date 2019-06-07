@@ -1,13 +1,11 @@
 <?php
 
-<?php
 
 	/*
 		Author: Denis Dimitrijevic 0107/2016
 		Author: Ognjen Petkovic 0526/2016
 	*/
 
-?>
 
 
 session_start();
