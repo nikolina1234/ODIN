@@ -1,4 +1,10 @@
+<?php
 
+	/*
+		Author: Ognjen Petkovic 0526/2016
+	*/
+
+?>
 		<div class="container">
 			<div class="row " style="height:14%;background-color:#459BF0;">
 				<div class="col my-auto">
