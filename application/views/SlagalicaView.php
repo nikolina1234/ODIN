@@ -44,7 +44,7 @@
                             Pravila igre
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item-text">Pravila pravila da bi me udavila</a>
+                            <a class="dropdown-item-text">Ako reč ne postoji u bazi dobija se 0 poena. Ako postoji za svako slovo se dobija 2 poena. Ukoliko je jednaka onoj koju je dobio kompjuter dobija se dodatnih 5 poena.</a>
 
                         </div>
                     </div>

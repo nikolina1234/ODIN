@@ -37,7 +37,7 @@
                         Pravila igre
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item-text">Pravila pravila da bi me udavila</a>
+                        <a class="dropdown-item-text">Za tačan broj dobija se 30 poena. Za broj koji je za 10 udaljen od tačnog 20, za 20 se dobija 10 poena. Za svaku dalju razliku dobija se 0 poena.</a>
 
                     </div>
                 </div>
