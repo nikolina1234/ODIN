@@ -188,9 +188,9 @@
 			
 			var kliknutaDugmad = new Array(0,0,0,0,0,0,0,0,0,0,0); /*označava koje dugme je kliknuto*/
 			
-			/**
-			* označava koje dugme je kliknuto
-			* @return void */
+			/*
+			 označava koje dugme je kliknuto
+			 @return void */
             function oboji1(idDugme)
             {
                 var dugme = document.getElementById(idDugme);
@@ -225,11 +225,11 @@
 
 
 
-            /**
-			* ukoliko je tacno korisnik/gost odgovorio i levo i desno dugme se boji u zeleno i disable-uje se
-			* a ukoliko ne pogodi samo dugme sa leve strane se zacrveni i disable-uje
-			* takođe računa i poene za svaki spojen par i disable-uje na kraju sva dugmad.
-			* @return void */
+            /*
+			ukoliko je tacno korisnik/gost odgovorio i levo i desno dugme se boji u zeleno i disable-uje se
+			 a ukoliko ne pogodi samo dugme sa leve strane se zacrveni i disable-uje
+			 takođe računa i poene za svaki spojen par i disable-uje na kraju sva dugmad.
+			 @return void */
 			function oboji2(idDugme)
             {
                 var dugme = document.getElementById(idDugme);
