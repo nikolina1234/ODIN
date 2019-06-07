@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  *SpojniceController - klasa za prikaz i upravljanje igrom spojnice
  * @version 1.0
  * @author Denis Dimitrijević 0107/16
@@ -55,7 +55,7 @@ class SpojniceController extends CI_Controller
 
         $this->view('SpojniceView');
     }
-/**
+/*
 *proverava da li postoje opisi u bazi
 * @return void
 */
@@ -71,3 +71,4 @@ class SpojniceController extends CI_Controller
     
 
 }
+?>
