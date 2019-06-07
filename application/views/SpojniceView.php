@@ -154,7 +154,7 @@
 
         <div class="col-2 text-center mt-sm-4">
             <form method="post" action="http://localhost/SlagalicaIgniter/AsocijacijeController/Asocijacije">
-                <input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Sledeca igra" disabled=true>
+                <input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Asocijacije" disabled=true>
             </form>
         </div>
         <script lang="javascript">

@@ -123,7 +123,7 @@ $_SESSION['uk_poeni'] =  $_SESSION['slagalica'] + $_SESSION['moj_broj'] + $_SESS
 				<br>
 				<br>
 				<form method="post" action="http://localhost/SlagalicaIgniter/SpojniceController/Spojnice">
-			       <input type="submit" id="sledeca" disabled='true' class="btn btn-secondary" value="Sledeca igra">
+			       <input type="submit" id="sledeca" disabled='true' class="btn btn-secondary" value="Spojnice">
 				</form>
 			</div>
 		</div>

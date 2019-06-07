@@ -224,7 +224,7 @@ $_SESSION['uk_poeni'] = $_SESSION['moj_broj'] + $_SESSION['slagalica'];
 
 			<div class="col-2 text-center mt-sm-4">
 				<form method="post" action="http://localhost/SlagalicaIgniter/KoZnaZnaController/KoZnaZna">
-				    <input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Sledeca igra" disabled=true>
+				    <input type="submit" id="sledecaIgra" class="btn btn-dark text-light" value="Ko zna zna" disabled=true>
 				</form>
 			</div>
 		</div>

@@ -95,7 +95,14 @@ $dkonacno = $_SESSION['d_konacno'];
                 </center>
 
                 <input class = "text-center rounded" value = <?php echo $_SESSION['uk_poeni']?>   type="text" class="form-control" id="broj_poena" readonly style = "background-color: #0080FF; width: 70px; height:70px; margin-left: 30%;color: white; font-size: 25px;">
-            </div>
+                <br>
+				<br>
+				<form method="post" action="http://localhost/SlagalicaIgniter/PoeniController/points">
+				<center>
+				   <input type="submit" class="btn btn-dark text-light" id="sledeca" value="kraj" disabled=true>
+				</center>
+				</form>
+			</div>
         </div>
 		
 		
@@ -197,45 +204,129 @@ $dkonacno = $_SESSION['d_konacno'];
 </div>
 <script>
 
+   var aaa1 = 0;
+   var aaa2 = 0;
+   var aaa3 = 0;
+   var aaa4 = 0;
+   var bbb1 = 0;
+   var bbb2 = 0;
+   var bbb3 = 0;
+   var bbb4 = 0;
+   var ccc1 = 0;
+   var ccc2 = 0;
+   var ccc3 = 0;
+   var ccc4 = 0;
+   var ddd1 = 0;
+   var ddd2 = 0;
+   var ddd3 = 0;
+   var ddd4 = 0;
+   var aaakon = 0;
+   var bbbkon = 0;
+   var ccckon = 0;
+   var dddkon = 0;
 				var tajmer = $('#tajmer_bar').progressBarTimer({
-                timeLimit: 60,
-                warningThreshold: 20,
+                timeLimit: 15,
+                warningThreshold: 5,
                 smooth: true,
                 baseStyle: 'bg-success',
                 warningStyle: 'bg-danger',
                 completeStyle: '',
                 onFinish:function () {				
-					document.getElementById('A1').disabled = true;
+					var dugme = document.getElementById('A1');
+					if(aaa1 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $a1;?>"
+					}
+					dugme.disabled = true;
 				
-					document.getElementById('A2').disabled = true;
+					dugme = document.getElementById('A2');
+					if(aaa2 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $a2;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('A3').disabled = true;
+					dugme = document.getElementById('A3');
+					if(aaa3 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $a3;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('A4').disabled = true;
+					dugme = document.getElementById('A4');
+					if(aaa4 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $a4;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('B1').disabled = true;
+					dugme = document.getElementById('B1');
+					if(bbb1 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $b1;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('B2').disabled = true;
+					dugme = document.getElementById('B2');
+					if(bbb2 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $b2;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('B3').disabled = true;
+					dugme = document.getElementById('B3');
+					if(bbb3 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $b3;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('B4').disabled = true;
+					dugme = document.getElementById('B4');
+					if(bbb4 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $b4;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('C1').disabled = true;
+					dugme = document.getElementById('C1');
+					if(ccc1 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $c1;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('C2').disabled = true;
+					dugme = document.getElementById('C2');
+					if(ccc2 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $c2;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('C3').disabled = true;
+					dugme = document.getElementById('C3');
+					if(ccc3 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $c3;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('C4').disabled = true;
+					dugme = document.getElementById('C4');
+					if(ccc4 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $c4;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('D1').disabled = true;
+					dugme = document.getElementById('D1');
+					if(ddd1 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $d1;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('D2').disabled = true;
+					dugme = document.getElementById('D2');
+					if(ddd2 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $d2;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('D3').disabled = true;
+					dugme = document.getElementById('D3');
+					if(ddd3 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $d3;?>"
+					}
+					dugme.disabled = true;
 					
-					document.getElementById('D4').disabled = true;
+					dugme = document.getElementById('D4');
+					if(ddd4 == 0) {dugme.className = "btn btn-primary btn-block";
+					dugme.innerHTML = "<?php echo $d4;?>"
+					}
+					dugme.disabled = true;
 
 					document.getElementById('dugmeA').disabled = true;
 					document.getElementById('dugmeB').disabled = true;
@@ -243,7 +334,31 @@ $dkonacno = $_SESSION['d_konacno'];
 					document.getElementById('dugmeD').disabled = true;
 					document.getElementById('dugmeKon').disabled = true;
 
-					//document.getElementById('sledeca').disabled = false;
+					document.getElementById('sledeca').disabled = false;
+					var inputBox = 	document.getElementById('A');
+					inputBox.value = "<?php echo $akonacno;?>"
+					if(aaakon == 0)inputBox.className = 'bg-primary';
+					inputBox.readOnly = true;
+					
+					inputBox = 	document.getElementById('B');
+					inputBox.value = "<?php echo $bkonacno;?>"
+					if(bbbkon == 0)inputBox.className = 'bg-primary';
+					inputBox.readOnly = true;
+					
+					inputBox = 	document.getElementById('C');
+					inputBox.value = "<?php echo $ckonacno;?>"
+					if(ccckon == 0)inputBox.className = 'bg-primary';
+					inputBox.readOnly = true;
+					
+					inputBox = 	document.getElementById('D');
+					inputBox.value = "<?php echo $dkonacno;?>"
+					if(dddkon == 0)inputBox.className = 'bg-primary';
+					inputBox.readOnly = true;
+					
+					inputBox = document.getElementById('Konacno');
+			        inputBox.value = "<?php echo $_SESSION['asoc_konacno']; ?>"
+					inputBox.className = 'bg-primary';
+					inputBox.readOnly = true;
                 }
 				});				
 
@@ -315,6 +430,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var a1 = "<?php echo $a1;?>"
+			aaa1 = 1;
 			document.getElementById(id).innerHTML = a1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -327,6 +443,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var a2 = "<?php echo $a2;?>"
+			aaa2 = 1;
 			document.getElementById(id).innerHTML = a2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -339,6 +456,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var a3 = "<?php echo $a3;?>"
+			aaa3 = 1;
 			document.getElementById(id).innerHTML = a3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -351,6 +469,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var a4 = "<?php echo $a4;?>"
+			aaa4 = 1;
 			document.getElementById(id).innerHTML = a4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -363,6 +482,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var b1 = "<?php echo $b1;?>"
+			bbb1 = 1;
 			document.getElementById(id).innerHTML = b1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -375,6 +495,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var b2 = "<?php echo $b2;?>"
+			bbb2 = 1;
 			document.getElementById(id).innerHTML = b2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -387,6 +508,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var b3 = "<?php echo $b3;?>"
+			bbb3 = 1;
 			document.getElementById(id).innerHTML = b3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -399,6 +521,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var b4 = "<?php echo $b4;?>"
+			bbb4 = 1;
 			document.getElementById(id).innerHTML = b4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -411,6 +534,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var c1 = "<?php echo $c1;?>"
+			ccc1 = 1;
 			document.getElementById(id).innerHTML = c1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -423,6 +547,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var c2 = "<?php echo $c2;?>"
+			ccc2 = 1;
 			document.getElementById(id).innerHTML = c2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -435,6 +560,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var c3 = "<?php echo $c3;?>"
+			ccc3 = 1;
 			document.getElementById(id).innerHTML = c3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -447,6 +573,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var c4 = "<?php echo $c4;?>"
+			ccc4 = 1;
 			document.getElementById(id).innerHTML = c4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -459,6 +586,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var d1 = "<?php echo $d1;?>"
+			ddd1 = 1;
 			document.getElementById(id).innerHTML = d1;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -471,6 +599,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var d2 = "<?php echo $d2;?>"
+			ddd2 = 1;
 			document.getElementById(id).innerHTML = d2;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -483,6 +612,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var d3 = "<?php echo $d3;?>"
+			ddd3 = 1;
 			document.getElementById(id).innerHTML = d3;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -495,6 +625,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				 dugme = document.getElementById("dugmeKon");
 				dugme.disabled = false;
 			var d4 = "<?php echo $d4;?>"
+			ddd4 = 1;
 			document.getElementById(id).innerHTML = d4;
 			document.getElementById(id).className = "btn btn-primary btn-block";
 			break;
@@ -520,6 +651,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
+				aaakon = 1;
 
 				for (i=1;i<5;i++)
 				{
@@ -578,6 +710,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
+				bbbkon = 1;
 
 				for (i=1;i<5;i++)
 				{
@@ -638,6 +771,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
+				ccckon = 1;
 
 				for (i=1;i<5;i++)
 				{
@@ -699,6 +833,7 @@ $dkonacno = $_SESSION['d_konacno'];
 				flag += 3;
 				inputBox.readOnly=true;
 				inputBox.style.backgroundColor = '#79F281';
+				dddkon = 1;
 
 				for (i=1;i<5;i++)
 				{
@@ -755,6 +890,7 @@ $dkonacno = $_SESSION['d_konacno'];
 			if (inputBox.value == "<?php  echo $_SESSION['asoc_konacno']  ?>" || inputBox.value==res || inputBox.value==res1)
 			{
 				tajmer.stop();
+				document.getElementById('sledeca').disabled = false;
 				poeni += 8 + 16 - flagA - flagB - flagC - flagD + 12 - flag;
 				inputBox.value = str;
 				inputBox.readOnly=true;
