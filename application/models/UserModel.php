@@ -187,7 +187,7 @@ session_start();
         public function updatePoints(){
             if(!empty($_SESSION['username'])){
                 $kor = $_SESSION['username'];
-                unset($_SESSION['username']);
+                //unset($_SESSION['username']);
             }
             if(!empty($_SESSION['uk_poeni']))$points = $_SESSION['uk_poeni'];
             else $points = 0;

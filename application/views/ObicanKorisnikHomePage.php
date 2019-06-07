@@ -6,7 +6,7 @@
 				</div>
 				
 				<div class="col my-auto text-center">
-					<form name="login" action="http://localhost/SlagalicaIgniter/" method="post">
+					<form name="login" action="http://localhost/SlagalicaIgniter/application/views/ende" method="post">
 						
 							<input class="btn btn-secondary btn-outline-dark btn-lg " type="submit" value="Izađi">
 						
