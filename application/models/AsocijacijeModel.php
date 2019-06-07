@@ -1,14 +1,20 @@
 <?php
 
-    class AsocijacijeModel extends CI_Model
-    {
-		 public function __construct()
-        {
+	/*
+	@author Igor Duric 0646/2016
+	*/
+
+    class AsocijacijeModel extends CI_Model {
+    	/*
+		kreiram novu instancu i vezujem bazu
+    	*/
+ 	public function __construct() {
             parent::__construct(); 
             $this->load->database();
         }
-		public function getAsocijacije()
-		{
+	    
+	    
+	public function getAsocijacije() {
             $maxid = 0;
 
             $query = $this->db->query("SELECT MAX(id_asocijacija) as maxid FROM asocijacija;");
