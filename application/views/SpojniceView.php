@@ -1,6 +1,3 @@
-<!--
-    @author Denis Dimitrijević 0107/16
--->
 
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -162,7 +159,6 @@
         </div>
         <script lang="javascript">
 		
-		/*podesavanja izgleda i funkcionisanja tajmera*/
                 var tajmer = $('#tajmer_bar').progressBarTimer({
                 timeLimit: 60,
                 warningThreshold: 20,
@@ -182,15 +178,12 @@
 
 		         tajmer.start(); 
 
-            var poeni = 0; /*osvojeni poeni u spojnicama*/
-            var br = 0; /*broji do 5, odnosno dok ne odigra igru*/
-            var kliknuto; /* da li je dugme kliknuto*/
+            var poeni = 0;
+            var br = 0;
+            var kliknuto;
 			
-			var kliknutaDugmad = new Array(0,0,0,0,0,0,0,0,0,0,0); /*označava koje dugme je kliknuto*/
+			var kliknutaDugmad = new Array(0,0,0,0,0,0,0,0,0,0,0);
 			
-			/*
-			 označava koje dugme je kliknuto
-			 @return void */
             function oboji1(idDugme)
             {
                 var dugme = document.getElementById(idDugme);
@@ -222,19 +215,11 @@
                 }
             }
 
-
-
-
-            /*
-			ukoliko je tacno korisnik/gost odgovorio i levo i desno dugme se boji u zeleno i disable-uje se
-			 a ukoliko ne pogodi samo dugme sa leve strane se zacrveni i disable-uje
-			 takođe računa i poene za svaki spojen par i disable-uje na kraju sva dugmad.
-			 @return void */
-			function oboji2(idDugme)
+            function oboji2(idDugme)
             {
                 var dugme = document.getElementById(idDugme);
 
-				
+				//kliknutaDugmad[idDugme] = 1;
 	
                 var kliknutoDugme = document.getElementById(kliknuto); //levo
 

@@ -1,23 +1,14 @@
 <?php
-/*
- *SpojniceController - klasa za prikaz i upravljanje igrom spojnice
- * @version 1.0
- * @author Denis Dimitrijević 0107/16
- */
+
 
 class SpojniceController extends CI_Controller
 {
-/*ucitavanje igre
-* @return void
-*/
+
     public function Spojnice() 
     {
         $this->putSpojnice();
     }
-/*
-*prikaz igre
-* @return void
-*/
+
     public function view($page)
     {
         if (!file_exists(APPPATH.'views/'.$page.'.php'))
@@ -29,9 +20,7 @@ class SpojniceController extends CI_Controller
         $this->load->view($page,[]);
         $this->load->view('inc/footer');
     }
-/*ucitavanje igre
-* @return void
-*/
+
     public function putSpojnice()
     {
         $this->load->model('SpojniceModel');
@@ -55,10 +44,7 @@ class SpojniceController extends CI_Controller
 
         $this->view('SpojniceView');
     }
-/*
-*proverava da li postoje opisi u bazi
-* @return void
-*/
+
     public function check()
     {
         $this->load->model('SpojniceModel');
@@ -68,7 +54,9 @@ class SpojniceController extends CI_Controller
         echo $success;
     }
 
-    
+    public function ispis()
+    {
+        
+    }
 
 }
-?>
