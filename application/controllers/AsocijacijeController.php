@@ -1,6 +1,13 @@
 <?php
+	
+	/*
+ 	@author Igor Durić 0646/16
+	*/
    class AsocijacijeController extends CI_Controller
    {
+	   /*
+	   	Uzimam jednu asocijaciju iz baze i prikazujem je preko sesije
+	   */
 	   public function Asocijacije()
 	   {
 		    $this->load->model('AsocijacijeModel');
@@ -35,11 +42,11 @@
 
             $_SESSION['asoc_konacno'] = $ret->asoc_konacno;
             $this->view('AsocijacijeView');
-
-            //VALJDA!! ovde treba zapamtiti to iz baze sto smo dohvatili i proslediti AsocijacijView.php.... NISAM SIGURAN...
-			
        }
        
+	   /*
+	   	prikaz stranice, prekopirano sa CodeIgniter tutorial-a
+	   */
 	   public function view($page)
         {
             if (!file_exists(APPPATH.'views/'.$page.'.php'))
