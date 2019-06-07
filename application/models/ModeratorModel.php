@@ -1,13 +1,24 @@
 <?php
-
+ /**
+ *SpojniceModel - model za igranje igre Spojnice
+ *@version 1.0
+ *@author Denis Dimitrijević 0107/16
+ */ 
     class ModeratorModel extends CI_Model
     {
+		/**
+     * Kreiranje nove instance i povezivanje s bazom
+     * @return  void
+     */
         public function __construct()
         {
             parent::__construct(); 
             $this->load->database();
         }
-
+/**
+*Moderator ubacuje rec u bazu na osnovu argumenta ali da nije prazan string
+*@return boolean
+*/
        public function commitWord($rec)
        {
            if (ctype_alpha($rec))
@@ -22,7 +33,10 @@
            else
             return false;
        }
-
+/**
+*Moderator ubacuje spojnice u bazu na osnovu argumenta ali da nije prazan string
+*@return boolean
+*/
        public function checkSpojnica($opis)
        {
          $query = $this->db->query("SELECT * FROM spojnica_opis WHERE opis_spojnice ='$opis' ;");
@@ -87,7 +101,10 @@
 
         return true;
        }
-
+/**
+*Moderator ubacuje ko zna zna u bazu na osnovu argumenata ali da nisu prazni stringovi
+*@return boolean
+*/
        public function ubaciKoZnaZna($pitanje,$t,$n1,$n2,$n3)
        {
             $query = $this->db->query("SELECT * FROM pitanje WHERE pitanje ='$pitanje' ;");
@@ -105,14 +122,13 @@
 
             return true;
        }
+	   /**
+	   *Moderator ubacuje u bazu asocijacije
+	   *@return boolean
+	   */
 	   public function checkAsocijacija($aa1,$aa2,$aa3,$aa4,$aa_konacno,$bb1,$bb2,$bb3,$bb4,$bb_konacno,$cc1,$cc2,$cc3,$cc4,$cc_konacno,$dd1,$dd2,$dd3,$dd4,$dd_konacno,$kon)
 	   {
-		   /*$query = $this->db->query("SELECT asoc_konacno FROM asocijacija WHERE asoc_konacno = '$kon' ;");
 		   
-		   if ($query->result()!=null)
-		   {
-			   return false;
-		   }*/
 		   
 		   $query = $this->db->query
 		   (
