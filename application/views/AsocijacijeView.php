@@ -225,8 +225,8 @@ $dkonacno = $_SESSION['d_konacno'];
    var ccckon = 0;
    var dddkon = 0;
 				var tajmer = $('#tajmer_bar').progressBarTimer({
-                timeLimit: 15,
-                warningThreshold: 5,
+                timeLimit: 60,
+                warningThreshold: 20,
                 smooth: true,
                 baseStyle: 'bg-success',
                 warningStyle: 'bg-danger',
