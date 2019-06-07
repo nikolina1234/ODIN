@@ -1,14 +1,22 @@
 <?php
-
+/**
+ *SpojniceController - klasa za prikaz i upravljanje igrom spojnice
+ * @version 1.0
+ * @author Denis Dimitrijević 0107/16
+ */
 class ModeratorController extends CI_Controller
 {
     private $model;
-
+/*ucitavanje igre
+* @return void
+*/
     public function index()
     {
         $this->view();
     }
-
+	
+/**Ucitavanje view-a
+*/
     public function view($page = 'HomePage')
     {
         if (!file_exists(APPPATH.'views/'.$page.'.php'))
@@ -20,17 +28,20 @@ class ModeratorController extends CI_Controller
         $this->load->view($page,[]);
         $this->load->view('inc/footer');
     }
-
+/**ucitavanje view slagalica
+*/
     public function Slagalica()
     {
         $this->view("ModeratorSlagalica");
     }
-
+/**vracanje na pocetnu stranicu za moderatora
+*/
     public function backToHome()
     {
         $this->view("ModeratorHomePage");
     }
-
+/**ubacuje rec, i mora sva polja ispravno da popuni
+*/
     public function ubaciRec()
     {
         if (isset($_POST['rec']))
@@ -53,12 +64,14 @@ class ModeratorController extends CI_Controller
            }
         }
     }
-
+/**ucitava view ubaci spojnice
+*/
     public function Spojnice()
     {
         $this->view('ModeratorSpojnice');
     }
-
+/**ubacuje spojnice tako da mora da popuni sva polja
+*/
     public function ubaciSpojnice()
     {
         $this->load->model('ModeratorModel');
@@ -200,12 +213,14 @@ class ModeratorController extends CI_Controller
 
 
     }
-
+/**ucitava view ko zna zna za ubacivanje
+*/
     public function KoZnaZna()
     {
         $this->view('ModeratorKoZnaZna');
     }
-
+/**ubacuje ko zna zna s tim sto mora moderator sva polja da popuni
+*/
     public function ubaciKoZnaZna()
     {
         $this->load->model('ModeratorModel');
@@ -286,10 +301,15 @@ class ModeratorController extends CI_Controller
         if (!$flag)
             $this->KoZnaZna();
     }
+	/**ucitava view za ubacivanje asocijacija
+	*/
 	 public function Asocijacije()
     {
         $this->view('ModeratorAsocijacije');
     }
+	
+	/**ubacuje asocijacije, s tim sto mora da ubaci sva polja, inace greska
+	*/
 	public function ubaciAsocijacije()
 	{
 		$this->load->model('ModeratorModel');
