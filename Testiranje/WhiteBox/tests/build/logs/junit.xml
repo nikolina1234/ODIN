@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CodeIgniter Application Test Suite" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="1.227781">
+    <testsuite name="AdminController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\AdminController_test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="1.071859">
+      <testcase name="test_prikazBaze" class="AdminController_test" classname="AdminController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\AdminController_test.php" line="8" assertions="1" time="0.008950">
+        <system-out>&lt;!--&#13;
+    @author Igor Durić 0646/16&#13;
+--&gt;&#13;
+</system-out>
+      </testcase>
+      <testcase name="test_prikazSlagalice" class="AdminController_test" classname="AdminController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\AdminController_test.php" line="17" assertions="1" time="1.062909"/>
+    </testsuite>
+    <testsuite name="ModeratorController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\ModeratorController_test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.110141">
+      <testcase name="test_Slagalica" class="ModeratorController_test" classname="ModeratorController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\ModeratorController_test.php" line="8" assertions="1" time="0.087901"/>
+      <testcase name="test_Spojnice" class="ModeratorController_test" classname="ModeratorController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\ModeratorController_test.php" line="17" assertions="1" time="0.022240"/>
+    </testsuite>
+    <testsuite name="UserController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\UserController_test.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.045781">
+      <testcase name="test_userHomePage" class="UserController_test" classname="UserController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\UserController_test.php" line="8" assertions="1" time="0.010409">
+        <system-out>&#13;
+&#13;
+</system-out>
+      </testcase>
+      <testcase name="test_rangLista" class="UserController_test" classname="UserController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\UserController_test.php" line="16" assertions="1" time="0.029469"/>
+      <testcase name="test_guestPage" class="UserController_test" classname="UserController_test" file="D:\wamp64\www\SlagalicaIgniter\application\tests\controllers\UserController_test.php" line="25" assertions="1" time="0.005903"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

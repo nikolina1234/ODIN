@@ -1,0 +1,1213 @@
+{
+  "id": "f2cf2ee0-42af-4f5c-b175-efe92010463b",
+  "version": "2.0",
+  "name": "PSITestiranje",
+  "url": "http://localhost/SlagalicaIgniter",
+  "tests": [{
+    "id": "f94ea521-0928-41ee-b72e-663dbaa08310",
+    "name": "ObicanUspesnoLogovanje",
+    "commands": [{
+      "id": "6b34f842-b9c0-48e3-85e3-6aad48f0c376",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c28df24-b879-4d0e-b1ea-5ed4ab6ee1c1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afc6ed33-4d9d-427b-9e1a-5daca94fd897",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c151551e-ce1c-4e5e-9e2d-98d7a486b8d1",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pera"
+    }, {
+      "id": "0e29c60a-b7e7-4885-a77f-4d5724b3187c",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "4a27f7dc-3b59-4616-a379-426ef6f64c1d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c068130-5ad7-449c-8d13-a0e3a4e45aa7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Običan Korisnik')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "250b8fa5-dbbb-40a4-9ffd-9619a11cd366",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Običan Korisnik')]", "xpath:innerText"]
+      ],
+      "value": "Običan Korisnik"
+    }]
+  }, {
+    "id": "1d42e072-39a4-4747-8bcc-2bd99fbd01f7",
+    "name": "ObicanNeuspesnoLogovanje",
+    "commands": [{
+      "id": "c1de9aa8-a108-4ad7-9f37-4551c306f555",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "363af815-d2fd-4aec-85bd-b1a64231dff2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e63275a-53ce-459a-ad57-8f534d03f51b",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89f47449-43fd-4353-b529-76cef3c904cf",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "petar"
+    }, {
+      "id": "8ee25617-5ac5-47c0-bfe9-23b0b882f478",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "04ea1896-210f-4501-80dd-e06e11a364e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "760a539d-d259-4b3d-a62d-70b7b748c821",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Slagalica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "489f843f-d91c-4841-80ad-1de1df3be81d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(7) > td",
+      "targets": [
+        ["css=tr:nth-child(7) > td", "css:finder"],
+        ["xpath=//tr[7]/td", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "54255357-33a3-4a2b-ab18-d45ab3779063",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(7) .btn",
+      "targets": [
+        ["css=tr:nth-child(7) .btn", "css:finder"],
+        ["xpath=//input[@value='Registruj se']", "xpath:attributes"],
+        ["xpath=//tr[7]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9fe8e82d-585a-48ce-b51a-432e1db99258",
+    "name": "ObicanRangLista",
+    "commands": [{
+      "id": "366c168f-9e82-4b5c-95b1-b42fe9a4eba8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a353dbe-01e7-460e-a456-542432f567fe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "168a99b7-1d28-4096-9ec0-faf92e78ed98",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e214849d-5ec3-49da-832d-076e8a4672cf",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pera"
+    }, {
+      "id": "5cc1d94e-36ee-4974-81ec-47607c902758",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "ca4d70bc-2ee1-43c3-847c-8c5c403176da",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa01e328-2434-406d-9628-edefd61add46",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn",
+      "targets": [
+        ["css=tr:nth-child(3) .btn", "css:finder"],
+        ["xpath=//input[@value='Rang lista']", "xpath:attributes"],
+        ["xpath=//tr[3]/td/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3daa952-7dfc-4d25-b617-6121e386d8bd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Običan korisnik -> Rang lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "148f9606-77c0-4555-8e0c-5fe5fa8daff2",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Običan korisnik -> Rang lista')]", "xpath:innerText"]
+      ],
+      "value": "Običan korisnik -> Rang lista"
+    }]
+  }, {
+    "id": "52ef4f40-5b68-41e2-bbb0-51243ae3d86e",
+    "name": "GostPrijava",
+    "commands": [{
+      "id": "decf611a-82e3-4027-9fd0-47d4c7d74829",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de3e19fe-d65c-46c7-8331-867122cc277f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9fcf02a3-d49b-4a1b-a8c8-29a7c45c0930",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(10) .btn",
+      "targets": [
+        ["css=tr:nth-child(10) .btn", "css:finder"],
+        ["xpath=//input[@value='Nastavi kao gost']", "xpath:attributes"],
+        ["xpath=//tr[9]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2d46597-7282-41a2-a666-6a1da5c97cc5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Gost')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70eb2efa-448e-4844-9ece-803de16f206f",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Gost')]", "xpath:innerText"]
+      ],
+      "value": "Gost"
+    }]
+  }, {
+    "id": "f42eb00e-1928-448f-a2aa-32fcadf57b7a",
+    "name": "GostIgra",
+    "commands": [{
+      "id": "f7752897-f572-40ec-b811-e6062ee617cd",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f40cc99e-a092-4829-842b-f13c0ce6ad09",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04b61aa2-21d6-4fbe-b03b-73220d6f6aaf",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(10) .btn",
+      "targets": [
+        ["css=tr:nth-child(10) .btn", "css:finder"],
+        ["xpath=//input[@value='Nastavi kao gost']", "xpath:attributes"],
+        ["xpath=//tr[9]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c298d09-e144-41f5-aa22-d6c2e2167933",
+      "comment": "",
+      "command": "click",
+      "target": "name=gostime",
+      "targets": [
+        ["name=gostime", "name"],
+        ["css=td:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='gostime']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f68ca7f0-fd0b-4b4c-93c7-1afb17c902db",
+      "comment": "",
+      "command": "type",
+      "target": "name=gostime",
+      "targets": [
+        ["name=gostime", "name"],
+        ["css=td:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='gostime']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "fe17a035-6ef6-42dc-990f-9f5d3e3ce3d2",
+      "comment": "",
+      "command": "click",
+      "target": "name=igra",
+      "targets": [
+        ["name=igra", "name"],
+        ["css=.text-light", "css:finder"],
+        ["xpath=//input[@name='igra']", "xpath:attributes"],
+        ["xpath=//tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22bf54e2-f6c2-41b1-9261-6b96d7e5e3f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-sm-12 > h3",
+      "targets": [
+        ["css=.col-sm-12 > h3", "css:finder"],
+        ["xpath=//center/div/div/h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Ponuđena slova:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "98f0b00e-f2d6-483e-9eaa-5411d56f8df9",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.col-sm-12 > h3",
+      "targets": [
+        ["css=.col-sm-12 > h3", "css:finder"],
+        ["xpath=//center/div/div/h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Ponuđena slova:')]", "xpath:innerText"]
+      ],
+      "value": "Ponuđena slova:"
+    }]
+  }, {
+    "id": "d65ba34a-b0d5-45a5-a5f1-97aa57aaee0e",
+    "name": "GostIzlazak",
+    "commands": [{
+      "id": "69dd36af-36cd-4aa7-9e98-fd29c9961ca7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43be3972-a598-4dbc-b0c1-9d5245b9be8f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0a8cf16-e4bd-49a3-960b-5f3673fd110f",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(10) .btn",
+      "targets": [
+        ["css=tr:nth-child(10) .btn", "css:finder"],
+        ["xpath=//input[@value='Nastavi kao gost']", "xpath:attributes"],
+        ["xpath=//tr[9]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3984349-fae4-4fba-bac3-57c4c64b21b7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=//input[@value='Izađi']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e7306ed-c9f3-4936-b12c-fabb0a3ba0b6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Slagalica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a742ba2-2eae-42ef-b03d-4c356501e059",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Slagalica')]", "xpath:innerText"]
+      ],
+      "value": "Slagalica"
+    }]
+  }, {
+    "id": "bf1b6dd9-7262-45d4-ab6b-4772107f6f9a",
+    "name": "ModeratorPrijava",
+    "commands": [{
+      "id": "173f2b23-64f4-4f00-8506-86b91c0f8a6d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac79cc57-815a-4321-927d-f8c01fde038e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fcc464b9-e77b-452a-9da6-fa644f7419ba",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c21fcfa-76a7-4fac-8980-a82bd526d170",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "zik"
+    }, {
+      "id": "1924c538-33fb-4589-b3d0-1482f21a3dbd",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7774177d-8e61-4bd2-a85a-de3a5e14e951",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "zika"
+    }, {
+      "id": "caed7fd4-ce8d-4940-9dc6-e23afc8d05e2",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "8c1ce678-d0d6-4355-9408-1772d7e735c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bca79d2-f3d6-4430-94d6-0f4a65e7f734",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Moderator')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "af4598cf-c97a-4835-ad10-73998b151eff",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Moderator')]", "xpath:innerText"]
+      ],
+      "value": "Moderator"
+    }]
+  }, {
+    "id": "ed64166e-1ba9-4fee-9593-960fffa872a8",
+    "name": "ModeratorRegistracija",
+    "commands": [{
+      "id": "620ab1f5-8365-4fd0-8ed5-a641c5eb5f9e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "613e493e-cc5a-4304-8bb8-06f40086ea95",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "575505c9-54ed-4266-a418-9cdbe98b2399",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-center tr:nth-child(2) > td:nth-child(2)",
+      "targets": [
+        ["css=.text-center tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//div[2]/form/table/tbody/tr[2]/td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4032a3a-28f3-47f0-b583-1fbe0ad6b585",
+      "comment": "",
+      "command": "click",
+      "target": "name=tip",
+      "targets": [
+        ["name=tip", "name"],
+        ["css=tr:nth-child(1) > td:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@name='tip']", "xpath:attributes"],
+        ["xpath=//div[2]/form/table/tbody/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cbeff42-2948-4c03-90e0-2b12f50ec120",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.text-center tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//div[2]/form/table/tbody/tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "882678b2-87d3-4792-a5b3-af1973ffda39",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.text-center tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//div[2]/form/table/tbody/tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "mod"
+    }, {
+      "id": "f753334e-db82-41fe-a163-3ce775ce89a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=passw",
+      "targets": [
+        ["name=passw", "name"],
+        ["css=tr:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='passw']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "83b4acb0-7dc9-4a9f-89fe-e5ee1675c453",
+      "comment": "",
+      "command": "type",
+      "target": "name=passwConf",
+      "targets": [
+        ["name=passwConf", "name"],
+        ["css=tr:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='passwConf']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "2bb6eb0f-8b48-475e-b69e-cbe1e3dba628",
+      "comment": "",
+      "command": "click",
+      "target": "name=pol",
+      "targets": [
+        ["name=pol", "name"],
+        ["css=tr:nth-child(5) input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='pol']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72b9dc51-8bec-4db9-b7c2-24559b8819b8",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03308dc3-02d7-4b10-9d5e-8ed64fa12ed8",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ada7449-3057-45aa-a22f-48e49a0e5219",
+      "comment": "",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": "ognjen845@gmail.com"
+    }, {
+      "id": "59a3ac91-f75b-4b1b-8878-cff0080abe80",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(7) .btn",
+      "targets": [
+        ["css=tr:nth-child(7) .btn", "css:finder"],
+        ["xpath=//input[@value='Registruj se']", "xpath:attributes"],
+        ["xpath=//tr[7]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e010fb32-228d-43a7-a909-8a10b6eebd80",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Običan Korisnik')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac2289b3-17e1-423c-b83d-7d55953bc4c9",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Običan Korisnik')]", "xpath:innerText"]
+      ],
+      "value": "Običan Korisnik"
+    }]
+  }, {
+    "id": "9c5167ab-b0c1-42fb-ae03-8eaec7acb229",
+    "name": "ModeratorDodavanjeReci",
+    "commands": [{
+      "id": "fd1d2ca9-92dd-4f61-bdd7-40c4932905fe",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0c7e7cf5-2a8a-46b5-bf90-2b2c904d6ad5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee8bda41-87e2-4cd4-9bcf-2bb14e149583",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d23917a-8152-49b5-af60-5a53345dd167",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "zika"
+    }, {
+      "id": "52c71e71-8ae5-45bd-a68d-2f9465955387",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "e0f4a346-4411-4773-9a9c-26e18c3a848a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a6a3833-67d1-4d66-b697-85a16b2d3b86",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) .btn",
+      "targets": [
+        ["css=tr:nth-child(4) .btn", "css:finder"],
+        ["xpath=//input[@value='Slagalica']", "xpath:attributes"],
+        ["xpath=//td/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e18065ae-60b3-4d23-9ab7-069e3971924d",
+      "comment": "",
+      "command": "click",
+      "target": "name=rec",
+      "targets": [
+        ["name=rec", "name"],
+        ["css=td:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='rec']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "38c5c725-14e5-4637-8327-03e1de11b0e6",
+      "comment": "",
+      "command": "type",
+      "target": "name=rec",
+      "targets": [
+        ["name=rec", "name"],
+        ["css=td:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='rec']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "dsss"
+    }, {
+      "id": "ca55d515-bb8f-4bad-a230-05ec3131b5e8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-light",
+      "targets": [
+        ["css=.text-light", "css:finder"],
+        ["xpath=//input[@value='Commit']", "xpath:attributes"],
+        ["xpath=//tr[2]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0892224e-dd90-4baa-aee2-a74b50e1d87e",
+    "name": "AdminPrijava",
+    "commands": [{
+      "id": "8e4b451e-c06d-460d-8d2f-5607ae4d1bce",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be6e7708-d83c-45d6-8521-447081d24c2a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "18e58960-8deb-4fc9-8dd9-bc21012fa931",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad8f4935-72e0-4bb0-9fb6-127fd96fe672",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "cca070f6-ec5c-40f0-ab83-86d1f555ead9",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "admin123"
+    }, {
+      "id": "79b1ee9b-c767-46ee-bebd-82e3dc80e177",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "837dee96-27b3-4613-9da3-0c55138f54e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-dark",
+      "targets": [
+        ["css=.text-dark", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Admin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b610b05f-d725-4bba-a3df-7791ff7d5f6e",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center > i",
+      "targets": [
+        ["css=.text-center > i", "css:finder"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Admin')]", "xpath:innerText"]
+      ],
+      "value": "Admin"
+    }]
+  }, {
+    "id": "93c8c862-47f8-4b72-ab79-e12b4f5daa24",
+    "name": "AdminBrisanjeModeratora",
+    "commands": [{
+      "id": "17d63a83-655c-45c0-8b4e-d4923a2a18e4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eedb09cf-cfb2-47e7-bca2-2c93437727fa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1bd9dbf1-16b5-4f17-a2a9-f9ea760dbd41",
+      "comment": "",
+      "command": "click",
+      "target": "css=.border > tbody > tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=.border > tbody > tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "418f57a8-6e7c-455e-9709-9a225e1e0ea2",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4c32063d-ed06-496d-8302-8eacca45f520",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "501a8467-c821-4d04-a37f-9f039d293027",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "admin123"
+    }, {
+      "id": "737f2daf-a406-4509-b2f6-cc926498330b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac1428e0-01e9-4c01-8a75-d2b96e31ac53",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn",
+      "targets": [
+        ["css=tr:nth-child(3) .btn", "css:finder"],
+        ["xpath=//input[@value='Prikaz moderatora']", "xpath:attributes"],
+        ["xpath=//tr[3]/td/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb488365-7586-4eea-a048-296199c6a5d8",
+      "comment": "",
+      "command": "click",
+      "target": "css=td .btn",
+      "targets": [
+        ["css=td .btn", "css:finder"],
+        ["xpath=//input[@value='obrisi']", "xpath:attributes"],
+        ["xpath=//td[3]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2b8044cd-9f01-4854-81cb-e720547605de",
+    "name": "AdminKorisnickiZahtevi",
+    "commands": [{
+      "id": "e1776fb5-1d21-4c7b-aada-a327660ea3c4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/SlagalicaIgniter/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a179aa08-4c67-4386-9b3d-860198d60901",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1226710d-a0cf-478e-8e4e-beeec347e8e8",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1f11904-45c8-43c8-b15e-99fe680bfe56",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.border > tbody > tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "8d77788d-8c1c-448f-ba71-1eb9c3550df1",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.border > tbody > tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "admin123"
+    }, {
+      "id": "2b941697-d2cf-47c2-b47e-28c373aba8e5",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9fca0bd-7158-47d3-82a0-8dda967fc129",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.col > .row",
+      "targets": [
+        ["css=.col > .row", "css:finder"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b285d6a5-1e7b-45a3-b44e-3049290d0a84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col > .row",
+      "targets": [
+        ["css=.col > .row", "css:finder"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e8fc97d-e4ad-4ee2-a477-e167d6d33707",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-secondary",
+      "targets": [
+        ["css=.btn-secondary", "css:finder"],
+        ["xpath=//input[@value='Prijavi se']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53e9e2d8-14c0-4511-bd6e-d9735ba72d42",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) .btn",
+      "targets": [
+        ["css=tr:nth-child(5) .btn", "css:finder"],
+        ["xpath=//input[@value='Korisnički zahtevi']", "xpath:attributes"],
+        ["xpath=//tr[5]/td/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e39c400-c4a8-452d-bdaa-3c43ca6603da",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(3) .btn",
+      "targets": [
+        ["css=td:nth-child(3) .btn", "css:finder"],
+        ["xpath=//input[@value='Prihvati']", "xpath:attributes"],
+        ["xpath=//td[3]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "4d0abb24-159e-4e6c-beee-3efc9e4cb57e",
+    "name": "ObicanKorisnik",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1d42e072-39a4-4747-8bcc-2bd99fbd01f7", "9fe8e82d-585a-48ce-b51a-432e1db99258", "f94ea521-0928-41ee-b72e-663dbaa08310"]
+  }, {
+    "id": "c646e01e-6edf-4829-a55b-ec40ae689b86",
+    "name": "Gost",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f42eb00e-1928-448f-a2aa-32fcadf57b7a", "d65ba34a-b0d5-45a5-a5f1-97aa57aaee0e", "52ef4f40-5b68-41e2-bbb0-51243ae3d86e"]
+  }, {
+    "id": "08232fc1-5559-441e-844e-97e0eaa8dadb",
+    "name": "Moderator",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9c5167ab-b0c1-42fb-ae03-8eaec7acb229", "bf1b6dd9-7262-45d4-ab6b-4772107f6f9a", "ed64166e-1ba9-4fee-9593-960fffa872a8"]
+  }, {
+    "id": "03022482-57d0-488a-a1ee-cb2e4d92bf09",
+    "name": "Admin",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["93c8c862-47f8-4b72-ab79-e12b4f5daa24", "2b8044cd-9f01-4854-81cb-e720547605de", "0892224e-dd90-4baa-aee2-a74b50e1d87e"]
+  }],
+  "urls": ["http://localhost/", "http://localhost/SlagalicaIgniter"],
+  "plugins": []
+}
